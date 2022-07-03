@@ -4,7 +4,7 @@
     <div class="flex">
         <img
             class="hidden w-48 mr-6 md:block"
-            src="{{asset('images/doom.jpg')}}"
+            src="{{$list->logo? asset('storage/'.$list->logo) : asset('/images/bouchta.png')}}"
             alt=""
         />
         <div>
