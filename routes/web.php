@@ -50,6 +50,9 @@ Route::post('/logout',[UserController::class, 'logout'])
 //Log In user
 Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 
+//Manage Listings
+Route::get('/listings/manage',[ListingController::class, 'manage'])->middleware('auth');
+
 
 
 
