@@ -1,5 +1,6 @@
 ## About Project
 Goal is to create a plateform where you can add information about an existing album and other users can consult it
+using laravel, mySQL and tailwind as a css framework
 project not done yet, few screens of what's done so far:
 
 Home page:
