@@ -19,34 +19,31 @@
                 theme: {
                     extend: {
                         colors: {
-                            laravel: "#ef3b2d",
+                            laravel: "#DEDE4C",
                         },
                     },
                 },
             };
         </script>
-        <title>LaraGigs | Find Laravel Jobs & Projects</title>
+        <title>All Caps</title>
     </head>
     <body class="mb-48">
         <nav class="flex justify-between items-center mb-4">
             <a href="/"
-                ><img class="w-24" src="{{asset('images/lana.jpg')}}" alt="" class="logo"
+                ><img class="w-32" src="{{asset('images/lordquas.png')}}" alt="" class="logo"
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
                 <li>
-                    <span class="font-bold uppercase">Welcome {{auth()->user()->name}}</span>
-                </li>
-                <li>
                     <a href="/listings/manage" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i>
-                        Manage Listings</a
+                        Manage albums</a
                     >
                 </li>
                 <li>
                     <form class="inline" method="post" action="/logout">
                         @csrf
-                        <button type="submit">
+                        <button type="submit" class="hover:text-laravel">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
                         </button>
                     </form>
@@ -74,12 +71,12 @@
     class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center"
 >
 
-    <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
+    <p class="ml-2 text-black"> Viktor Vaughn &copy; Doritos, Cheetos or Fritos </p>
 
     <a
         href="/listings/create"
-        class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
-        >Post Job</a
+        class="absolute border-2 border-black top-1/3 right-10 rounded-lg bg-laravel text-black py-2 px-5 hover:text-laravel hover:bg-black"
+        >Add Album</a
     >
 </footer>
 <x-flashAlert/>

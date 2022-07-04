@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Register
             </h2>
-            <p class="mb-4">Create an account to post gigs</p>
+            <p class="mb-4">Create an account to add albums</p>
         </header>
 
         <form action="/users" method="POST">
@@ -76,7 +76,7 @@
             <div class="mb-6">
                 <button
                     type="submit"
-                    class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
+                    class="bg-laravel text-black rounded py-2 px-4 hover:bg-black"
                 >
                     Sign Up
                 </button>

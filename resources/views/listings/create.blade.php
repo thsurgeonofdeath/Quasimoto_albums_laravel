@@ -2,9 +2,9 @@
 <x-card class="p-10 max-w-lg mx-auto mt-24">
      <header class="text-center">
         <h2 class="text-2xl font-bold uppercase mb-1">
-              Create a Gig
+              Add an album
         </h2>
-            <p class="mb-4">Post a gig to find a developer</p>
+            <p class="mb-4">add the album details below</p>
      </header>
     <form method="POST" action="/listings" enctype="multipart/form-data">
         @csrf
@@ -12,7 +12,7 @@
             <label
                 for="company"
                 class="inline-block text-lg mb-2"
-                >Company Name</label
+                >Artist Name</label
             >
             <input
                 type="text"
@@ -26,13 +26,12 @@
 
         <div class="mb-6">
             <label for="title" class="inline-block text-lg mb-2"
-                >Job Title</label
+                >Album Title</label
             >
             <input
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
                 name="title"
-                placeholder="Example: Senior Laravel Developer"
                 value="{{old('title')}}"
             />
             @error('title')
@@ -44,13 +43,12 @@
             <label
                 for="location"
                 class="inline-block text-lg mb-2"
-                >Job Location</label
+                >Release year</label
             >
             <input
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
                 name="location"
-                placeholder="Example: Remote, Boston MA, etc"
                 value="{{old('location')}}"
             />
             @error('location')
@@ -59,16 +57,16 @@
         </div>
 
         <div class="mb-6">
-            <label for="email" class="inline-block text-lg mb-2"
-                >Contact Email</label
+            <label for="label" class="inline-block text-lg mb-2"
+                >Label</label
             >
             <input
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
-                name="email"
-                value="{{old('email')}}"
+                name="label"
+                value="{{old('label')}}"
             />
-            @error('email')
+            @error('label')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
         </div>
@@ -78,7 +76,7 @@
                 for="website"
                 class="inline-block text-lg mb-2"
             >
-                Website/Application URL
+                RateYourMusic page
             </label>
             <input
                 type="text"
@@ -93,13 +91,13 @@
 
         <div class="mb-6">
             <label for="tags" class="inline-block text-lg mb-2">
-                Tags (Comma Separated)
+                Genres (Comma Separated)
             </label>
             <input
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
                 name="tags"
-                placeholder="Example: Laravel, Backend, Postgres, etc"
+                placeholder="Example: hiphop, indie rock, baroque pop, etc"
                 value="{{old('tags')}}"
             />
             @error('tags')
@@ -109,7 +107,7 @@
 
         <div class="mb-6">
             <label for="logo" class="inline-block text-lg mb-2">
-                Company Logo
+                Album cover
             </label>
             <input
                 type="file"
@@ -128,13 +126,13 @@
                 for="description"
                 class="inline-block text-lg mb-2"
             >
-                Job Description
+                About the album
             </label>
             <textarea
                 class="border border-gray-200 rounded p-2 w-full"
                 name="description"
                 rows="10"
-                placeholder="Include tasks, requirements, salary, etc"
+                placeholder="review or informations about the album"
                 
             >{{old('description')}}</textarea>
             @error('description')
@@ -144,9 +142,9 @@
 
         <div class="mb-6">
             <button
-                class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
+                class="bg-laravel text-black rounded py-2 px-4 hover:bg-black hover:text-laravel"
             >
-                Create Gig
+                Create album
             </button>
 
             <a href="/" class="text-black ml-4"> Back </a>

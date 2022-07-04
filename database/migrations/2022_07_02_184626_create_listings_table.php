@@ -21,7 +21,7 @@ class CreateListingsTable extends Migration
             $table->string('tags');
             $table->string('company');
             $table->string('location');
-            $table->string('email');
+            $table->string('label');
             $table->string('website');
             $table->longText('description');
             $table->timestamps();

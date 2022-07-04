@@ -12,8 +12,9 @@ class ListingController extends Controller
 {
     // show all listings
     public function index(){
+        // dd(request('label'));
         return view('listings.index', [
-            'listings'  => Listing::latest()->filter(request(['tag','search']))->paginate(6)
+            'listings'  => Listing::latest()->filter(request(['tag','search','label','date']))->paginate(6)
         ]);
     }
     // show single listing
@@ -30,13 +31,13 @@ class ListingController extends Controller
     public function store(Request $request){
 
         $formFields = $request->validate([
-            'title'         => 'required',
-            'company'       => ['required',Rule::unique('listings','company')],
-            'location'      =>'required',
-            'website'       =>'required',
-            'tags'          =>'required',
-            'email'         =>['required','email'],
-            'description'   =>'required'
+            'title'         =>  'required',
+            'company'       =>  'required',
+            'location'      =>  'required',
+            'website'       =>  'required',
+            'tags'          =>  'required',
+            'label'         =>  'required',
+            'description'   =>  'required'
         ]);
 
         if($request->hasFile('logo')){
@@ -46,7 +47,7 @@ class ListingController extends Controller
         $formFields['user_id'] = auth()->id();
 
         Listing::create($formFields);
-        return redirect('/')->with('message','Listing created successfully!');
+        return redirect('/')->with('message','Album added successfully!');
     }
     //Edit Listing
 
@@ -76,7 +77,7 @@ class ListingController extends Controller
             'location'      =>  'required',
             'website'       =>  'required',
             'tags'          =>  'required',
-            'email'         =>  ['required','email'],
+            'label'         =>  'required',
             'description'   =>  'required'
         ]);
 
@@ -85,7 +86,7 @@ class ListingController extends Controller
         }
 
         $listing->update($formFields);
-        return back()->with('message','Listing updated successfully!');
+        return back()->with('message','Album updated successfully!');
     }
     //Delete Listing
     public function destroy(Listing $listing){

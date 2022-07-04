@@ -15,11 +15,11 @@ class ListingFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'tags' => 'laravel, api, Django',
+            'tags' => 'alternative hiphop, jazz rap',
             'company' => $this->faker->company(),
-            'email' => $this->faker->email(),
+            'label' => $this->faker->name(),
             'website' => $this->faker->url(),
-            'location' => $this->faker->address(),
+            'location' => $this->faker->year(),
             'description' => $this->faker->paragraph(5),
 
         ];

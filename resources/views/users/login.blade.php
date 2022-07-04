@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Register
             </h2>
-            <p class="mb-4">Login to your account lol</p>
+            <p class="mb-4">Login to your account</p>
         </header>
 
         <form action="/users/authenticate" method="POST">
@@ -44,7 +44,7 @@
             <div class="mb-6">
                 <button
                     type="submit"
-                    class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
+                    class="bg-laravel text-black rounded py-2 px-4 hover:bg-black"
                 >
                     Sign In
                 </button>
