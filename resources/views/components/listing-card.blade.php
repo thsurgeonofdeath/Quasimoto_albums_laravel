@@ -11,10 +11,10 @@
             <h3 class="text-2xl">
                 <a href="/listing/{{$list->id}}">{{$list->title}}</a>
             </h3>
-            <div class="text-xl font-bold mb-4">{{$list->company}}</div>
+            <div class="text-xl font-bold mb-4">{{$list->artist}}</div>
             <x-tags :tagscsv="$list->tags"/>
             <div class="text-lg mt-4 font-serif">
-                <i class="fa-solid fa-calendar-days"></i>   Release date: <a class="hover:text-laravel" href="/?date={{$list->location}}"> {{$list->location}}
+                <i class="fa-solid fa-calendar-days"></i>   Release date: <a class="hover:text-laravel" href="/?date={{$list->year}}"> {{$list->year}}
             </div>
             @php
             $label = $list->label;

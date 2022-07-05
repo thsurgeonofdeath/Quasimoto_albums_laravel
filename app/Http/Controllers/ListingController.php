@@ -32,8 +32,8 @@ class ListingController extends Controller
 
         $formFields = $request->validate([
             'title'         =>  'required',
-            'company'       =>  'required',
-            'location'      =>  'required',
+            'artist'        =>  'required',
+            'year'          =>  'required',
             'website'       =>  'required',
             'tags'          =>  'required',
             'label'         =>  'required',
@@ -73,8 +73,8 @@ class ListingController extends Controller
 
         $formFields = $request->validate([
             'title'         =>  'required',
-            'company'       =>  'required',
-            'location'      =>  'required',
+            'artist'        =>  'required',
+            'year'          =>  'required',
             'website'       =>  'required',
             'tags'          =>  'required',
             'label'         =>  'required',
@@ -86,7 +86,7 @@ class ListingController extends Controller
         }
 
         $listing->update($formFields);
-        return back()->with('message','Album updated successfully!');
+        return redirect('/')->with('message','Album updated successfully!');
     }
     //Delete Listing
     public function destroy(Listing $listing){

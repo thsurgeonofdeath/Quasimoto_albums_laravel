@@ -4,7 +4,7 @@
             <h1
                 class="text-3xl text-center font-bold my-6 uppercase"
             >
-                Manage Gigs
+                Manage Albums
             </h1>
         </header>
 
@@ -38,7 +38,7 @@
                     <form method="POST" action="/listings/{{$listing->id}}">
                         @csrf
                         @method('DELETE')
-                        <button class="text-red-500"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                        <button class="text-red-500" onclick="albumDelete()"><i class="fa-solid fa-trash-can"></i> Delete</button>
                       </form>
                     </td>
                 </tr>
@@ -50,6 +50,11 @@
                     </td>
                 </tr>
                 @endunless
+                <script>
+                    function albumDelete() {
+                    return confirm("Are you sure you want to delete this album?");
+                    }
+                </script>
             </tbody>
         </table>
     </x-card>

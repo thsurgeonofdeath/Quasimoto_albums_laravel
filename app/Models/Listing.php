@@ -17,14 +17,14 @@ class Listing extends Model
         }
         if($filters['search']  ?? false){
             $query->where('title','like','%'.request('search').'%')
-            ->orWhere('company','like','%'.request('search').'%')
+            ->orWhere('artist','like','%'.request('search').'%')
             ->orWhere('tags','like','%'.request('search').'%');
         }
         if($filters['label']  ?? false){
             $query->where('label','like','%'.request('label').'%');
         }
         if($filters['date']  ?? false){
-            $query->where('location','like','%'.request('date').'%');
+            $query->where('year','like','%'.request('date').'%');
         }
     }
 

@@ -16,10 +16,10 @@ class ListingFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'tags' => 'alternative hiphop, jazz rap',
-            'company' => $this->faker->company(),
+            'artist' => $this->faker->name(),
             'label' => $this->faker->name(),
             'website' => $this->faker->url(),
-            'location' => $this->faker->year(),
+            'year' => $this->faker->year(),
             'description' => $this->faker->paragraph(5),
 
         ];

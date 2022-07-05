@@ -19,8 +19,8 @@ class CreateListingsTable extends Migration
             $table->string('title');
             $table->string('logo')->nullable();
             $table->string('tags');
-            $table->string('company');
-            $table->string('location');
+            $table->string('artist');
+            $table->string('year');
             $table->string('label');
             $table->string('website');
             $table->longText('description');

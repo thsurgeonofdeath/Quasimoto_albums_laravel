@@ -10,16 +10,16 @@
         @csrf
         <div class="mb-6">
             <label
-                for="company"
+                for="artist"
                 class="inline-block text-lg mb-2"
                 >Artist Name</label
             >
             <input
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
-                name="company" value="{{old('company')}}"
+                name="artist" value="{{old('artist')}}"
             />
-            @error('company')
+            @error('artist')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
         </div>
@@ -41,17 +41,17 @@
 
         <div class="mb-6">
             <label
-                for="location"
+                for="year"
                 class="inline-block text-lg mb-2"
                 >Release year</label
             >
             <input
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
-                name="location"
-                value="{{old('location')}}"
+                name="year"
+                value="{{old('year')}}"
             />
-            @error('location')
+            @error('year')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
         </div>

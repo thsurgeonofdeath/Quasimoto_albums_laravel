@@ -44,7 +44,7 @@
             <div class="mb-6">
                 <button
                     type="submit"
-                    class="bg-laravel text-black rounded py-2 px-4 hover:bg-black"
+                    class="bg-laravel text-black rounded py-2 px-4 hover:bg-black hover:text-laravel"
                 >
                     Sign In
                 </button>
