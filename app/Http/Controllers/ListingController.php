@@ -49,8 +49,8 @@ class ListingController extends Controller
         Listing::create($formFields);
         return redirect('/')->with('message','Album added successfully!');
     }
-    //Edit Listing
 
+    //Edit Listing
     public function edit(Listing $listing){
         //Check Authenticated User is Owner
         $userid = $listing->user_id;

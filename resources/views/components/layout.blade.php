@@ -28,14 +28,20 @@
         <title>All Caps</title>
     </head>
     <body class="mb-48">
-        <nav class="flex justify-between items-center mb-4">
+        <nav class="flex justify-between items-center mb-0">
             <a href="/"
-                ><img class="w-32" src="{{asset('images/lordquas.png')}}" alt="" class="logo"
+                ><img class="w-36" src="{{asset('images/lordquas.png')}}" alt="" class="logo"
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
                 <li>
-                    <a href="/listings/manage" class="hover:text-laravel"
+                    <a href="/users/edit" class="hover:text-laravel"
+                        ><i class="fa-solid fa-user-tie"></i>
+                        Edit Info</a
+                    >
+                </li>
+                <li>
+                    <a href="/users/manage" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i>
                         Manage albums</a
                     >
