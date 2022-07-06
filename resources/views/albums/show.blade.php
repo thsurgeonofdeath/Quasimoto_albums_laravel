@@ -29,7 +29,7 @@
                     About the album
                 </h3>
                 <div class="text-lg space-y-6">
-                    <p>
+                    <p class="text-justify">
                         {{$album->description}}
                     </p>
 

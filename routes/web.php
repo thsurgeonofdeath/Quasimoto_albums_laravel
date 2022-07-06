@@ -62,5 +62,6 @@ Route::get('/users/edit',[UserController::class,'edit'])
 Route::put('/users/{user}', [UserController::class, 'update'])
 ->middleware('auth');
 
-
-
+//Favourite albums list
+Route::get('/users/likes',[UserController::class,'likes'])
+->middleware('auth');

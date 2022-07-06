@@ -16,7 +16,7 @@
                     <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                     >
-                        <a href="/show">
+                        <a href="/album/{{$album->id}}">
                            {{ $album->title}}
                         </a>
                     </td>
@@ -35,10 +35,10 @@
                     <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                     >
-                    <form method="POST" action="/albums/{{$album->id}}">
+                    <form method="POST" action="/albums/{{$album->id}}" >
                         @csrf
                         @method('DELETE')
-                        <button class="text-red-500" onclick="albumDelete()"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                        <button class="text-red-500"><i class="fa-solid fa-trash-can"></i> Delete</button>
                       </form>
                     </td>
                 </tr>

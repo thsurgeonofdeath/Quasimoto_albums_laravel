@@ -30,4 +30,15 @@ class Album extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    //favourite relationship
+    public function likes(){
+        return $this->belongsToMany('App\Models\User');
+    }
+
+    public function isLiked(){
+        if(auth()->check()){
+            return auth()->user()->likes->contains('id',$this->id);
+        }
+    }
 }

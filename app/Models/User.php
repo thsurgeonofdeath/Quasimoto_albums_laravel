@@ -46,4 +46,9 @@ class User extends Authenticatable
     public function albums() {
         return $this->hasMany(Album::class, 'user_id');
     }
+
+    //favourite relationship
+    public function likes(){
+        return $this->belongsToMany('App\Models\Album');
+    }
 }

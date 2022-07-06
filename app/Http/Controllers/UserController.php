@@ -80,4 +80,9 @@ class UserController extends Controller
         $user->update($formFields);
         return redirect('/')->with('message','Changes Applied Successfully!!!');
     }
+
+    public function likes(){
+        $albums = auth()->user()->likes;
+        return view('users.likes',['albums' => $albums]);
+    }
 }
