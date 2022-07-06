@@ -10,21 +10,21 @@
 
         <table class="w-full table-auto rounded-sm">
             <tbody>
-                @unless($listings->isEmpty())
-                @foreach($listings as $listing)
+                @unless($albums->isEmpty())
+                @foreach($albums as $album)
                 <tr class="border-gray-300">
                     <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                     >
                         <a href="/show">
-                           {{ $listing->title}}
+                           {{ $album->title}}
                         </a>
                     </td>
                     <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                     >
                         <a
-                            href="/listings/{{$listing->id}}/edit"
+                            href="/albums/{{$album->id}}/edit"
                             class="text-blue-400 px-6 py-2 rounded-xl"
                             ><i
                                 class="fa-solid fa-pen-to-square"
@@ -35,7 +35,7 @@
                     <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                     >
-                    <form method="POST" action="/listings/{{$listing->id}}">
+                    <form method="POST" action="/albums/{{$album->id}}">
                         @csrf
                         @method('DELETE')
                         <button class="text-red-500" onclick="albumDelete()"><i class="fa-solid fa-trash-can"></i> Delete</button>
@@ -46,7 +46,7 @@
                 @else
                 <tr class="border-gray-300">
                     <td class="px-4 py-8-border-t border-b border-gray-300 text-lg">
-                        <p class="text-center">No listings</p>
+                        <p class="text-center">No albums to display</p>
                     </td>
                 </tr>
                 @endunless

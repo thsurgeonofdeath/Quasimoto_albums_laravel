@@ -13,15 +13,15 @@
         >
             <img
                 class="w-48 mr-6 mb-6"
-                src="{{$listing->logo? asset('storage/'.$listing->logo) : asset('/images/noalbum.png')}}"
+                src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/noalbum.png')}}"
                 alt=""
             />
 
-            <h3 class="text-2xl mb-2">{{$listing->title}}</h3>
-            <div class="text-xl font-bold mb-4">{{$listing->artist}}</div>
-            <x-tags :tagscsv="$listing->tags"/>
+            <h3 class="text-2xl mb-2">{{$album->title}}</h3>
+            <div class="text-xl font-bold mb-4">{{$album->artist}}</div>
+            <x-tags :tagscsv="$album->tags"/>
             <div class="text-lg my-4">
-                <i class="fa-solid fa-record-vinyl"></i> Label: {{$listing->label}}
+                <i class="fa-solid fa-record-vinyl"></i> Label: {{$album->label}}
             </div>
             <div class="border border-gray-200 w-full mb-6"></div>
             <div>
@@ -30,7 +30,7 @@
                 </h3>
                 <div class="text-lg space-y-6">
                     <p>
-                        {{$listing->description}}
+                        {{$album->description}}
                     </p>
 
                     {{-- <a
@@ -41,7 +41,7 @@
                     > --}}
 
                     <a
-                        href="{{$listing->website}}"
+                        href="{{$album->website}}"
                         target="_blank"
                         class="block bg-black text-laravel py-2 rounded-xl hover:opacity-80"
                         ><i class="fa-solid fa-globe"></i> Visit RateYourMusic page</a

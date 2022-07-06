@@ -16,7 +16,7 @@ class="relative h-80 bg-laravel flex flex-col justify-center align-center text-c
     <div>
         @auth
         <a
-            href="/listings/create"
+            href="/albums/create"
             class="inline-block border-2 border-black text-black py-2 px-4 rounded-xl uppercase mt-2 hover:text-laravel hover:bg-black"
             >List an album</a
         >

@@ -4,10 +4,10 @@
             <h2 class="text-2xl font-bold uppercase mb-1">
                   Edit Gig
             </h2>
-                <p class="mb-4">Edit {{$listing->title}}</p>
+                <p class="mb-4">Edit {{$album->title}}</p>
          </header>
 
-        <form method="POST" action="/listings/{{$listing->id}}" enctype="multipart/form-data">
+        <form method="POST" action="/albums/{{$album->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">
@@ -19,7 +19,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="artist" value="{{$listing->artist}}"
+                    name="artist" value="{{$album->artist}}"
                 />
                 @error('artist')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -34,7 +34,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="title"
-                    value="{{$listing->title}}"
+                    value="{{$album->title}}"
                 />
                 @error('title')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -51,7 +51,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="year"
-                    value="{{$listing->year}}"
+                    value="{{$album->year}}"
                 />
                 @error('year')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -66,7 +66,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="label"
-                    value="{{$listing->label}}"
+                    value="{{$album->label}}"
                 />
                 @error('label')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -84,7 +84,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="website"
-                    value="{{$listing->website}}"
+                    value="{{$album->website}}"
                 />
                 @error('website')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -99,7 +99,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="tags"
-                    value="{{$listing->tags}}"
+                    value="{{$album->tags}}"
                 />
                 @error('tags')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -117,7 +117,7 @@
                 />
                 <img
                 class="w-48 mr-6 mb-6"
-                src="{{$listing->logo? asset('storage/'.$listing->logo) : asset('/images/bouchta.png')}}"
+                src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/bouchta.png')}}"
                 alt=""
                   />
                 @error('logo')
@@ -138,7 +138,7 @@
                     name="description"
                     rows="10"
                     placeholder="Include tasks, requirements, salary, etc"   
-                >{{$listing->description}}</textarea>
+                >{{$album->description}}</textarea>
                 @error('description')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror

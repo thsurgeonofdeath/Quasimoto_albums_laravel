@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Album;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ListingController;
+use App\Http\Controllers\AlbumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,24 +17,24 @@ use App\Http\Controllers\ListingController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//All Listings
-Route::get('/', [ListingController::class, 'index']);
-//Single Listing
-Route::get('/listing/{listing}', [ListingController::class, 'show']);
+//All Albums
+Route::get('/', [AlbumController::class, 'index']);
+//Single Album
+Route::get('/album/{album}', [AlbumController::class, 'show']);
 //Show Create Form
-Route::get('/listings/create', [ListingController::class, 'create'])
+Route::get('/albums/create', [AlbumController::class, 'create'])
 ->middleware('auth');
-//Store Listing Data
-Route::post('/listings', [ListingController::class, 'store'])
+//Store Album Data
+Route::post('/albums', [AlbumController::class, 'store'])
 ->middleware('auth');
 //Show edit form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])
+Route::get('/albums/{album}/edit', [AlbumController::class, 'edit'])
 ->middleware('auth');
-//Update listings after edit
-Route::put('/listings/{listing}', [ListingController::class, 'update'])
+//Update Album after edit
+Route::put('/albums/{album}', [AlbumController::class, 'update'])
 ->middleware('auth');
 //delete listing
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])
+Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])
 ->middleware('auth');
 
 //Show Register form
@@ -50,8 +51,8 @@ Route::post('/logout',[UserController::class, 'logout'])
 //Log In user
 Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 
-//Manage Listings
-Route::get('/listings/manage',[ListingController::class, 'manage'])
+//Manage Albums
+Route::get('/albums/manage',[AlbumController::class, 'manage'])
 ->middleware('auth');
 
 //Edit User Informations

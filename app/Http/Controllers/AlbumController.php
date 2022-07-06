@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Listing;
+use App\Models\Album;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class ListingController extends Controller
+class AlbumController extends Controller
 {
-    // show all listings
+    // show all albums
     public function index(){
         // dd(request('label'));
-        return view('listings.index', [
-            'listings'  => Listing::latest()->filter(request(['tag','search','label','date']))->paginate(6)
+        return view('albums.index', [
+            'albums'  => Album::latest()->filter(request(['tag','search','label','date']))->paginate(6)
         ]);
     }
-    // show single listing
-    public function show(Listing $listing){
-        return view('listings.show',[
-            'listing' => $listing
+    // show single album
+    public function show(Album $album){
+        return view('albums.show',[
+            'album' => $album
             ]);
     }
     // Show Create Form
     public function create(){
-        return view('listings.create');
+        return view('albums.create');
     }
-    //Store Listing data from Form
+    //Store album data from Form
     public function store(Request $request){
 
         $formFields = $request->validate([
@@ -46,26 +46,26 @@ class ListingController extends Controller
 
         $formFields['user_id'] = auth()->id();
 
-        Listing::create($formFields);
+        Album::create($formFields);
         return redirect('/')->with('message','Album added successfully!');
     }
 
-    //Edit Listing
-    public function edit(Listing $listing){
+    //Edit album
+    public function edit(Album $album){
         //Check Authenticated User is Owner
-        $userid = $listing->user_id;
+        $userid = $album->user_id;
         $authid = auth()->id();
         if($userid != $authid){
             return view('error');
         }
-        return view('listings.edit',['listing'=>$listing]);
+        return view('albums.edit',['album'=>$album]);
     }
 
     //update listing
-    public function update(Request $request, Listing $listing){
+    public function update(Request $request, Album $album){
 
         //Check Authenticated User is Owner
-        $userid = $listing->user_id;
+        $userid = $album->user_id;
         $authid = auth()->id();
         if($userid != $authid){
             abort(403, 'Unauthorized action baby');
@@ -85,26 +85,27 @@ class ListingController extends Controller
             $formFields['logo'] = $request->file('logo')->store('logos','public');
         }
 
-        $listing->update($formFields);
+        $album->update($formFields);
         return redirect('/')->with('message','Album updated successfully!');
     }
     //Delete Listing
-    public function destroy(Listing $listing){
+    public function destroy(Album $album){
         
         //Check Authenticated User is Owner
-        $userid = $listing->user_id;
+        $userid = $album->user_id;
         $authid = auth()->id();
+        // dd($userid,$authid);
         if($userid != $authid){
             return view('error');
         }
-        $listing->delete();
-        return redirect('/')->with('message','Listing was deleted!');
+        $album->delete();
+        return back()->with('message','Album was deleted!');
     }
 
-    //Manage listings
+    //Manage albums
     public function manage(){
-        return view('listings.manage',[
-            'listings' => auth()->user()->listings
+        return view('albums.manage',[
+            'albums' => auth()->user()->albums
         ]);
     }
 }

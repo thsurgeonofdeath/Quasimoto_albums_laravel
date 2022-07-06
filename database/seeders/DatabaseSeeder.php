@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Listing;
+use App\Models\Album;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             'name'  => 'bachtouti',
             'email' => 'bouchta@mail.com'
         ]);
-        Listing::factory(8)->create([
+
+        Album::factory(8)->create([
             'user_id' => $user->id
         ]);
 

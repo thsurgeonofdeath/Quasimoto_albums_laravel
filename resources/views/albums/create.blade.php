@@ -6,7 +6,7 @@
         </h2>
             <p class="mb-4">add the album details below</p>
      </header>
-    <form method="POST" action="/listings" enctype="multipart/form-data">
+    <form method="POST" action="/albums" enctype="multipart/form-data">
         @csrf
         <div class="mb-6">
             <label
