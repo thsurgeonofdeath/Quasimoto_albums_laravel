@@ -48,12 +48,14 @@
                         Favourites</a
                     >
                 </li>
+                @if($checkadminwriter == true)
                 <li>
                     <a href="/albums/manage" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i>
                         Manage albums</a
                     >
                 </li>
+                @endif
                 <li>
                     <form class="inline" method="post" action="/logout">
                         @csrf
@@ -86,12 +88,15 @@
 >
 
     <p class="ml-2 text-black"> Viktor Vaughn &copy; Doritos, Cheetos or Fritos </p>
-
+    @auth
+    @if($checkadminwriter == true)
     <a
         href="/albums/create"
         class="absolute border-2 border-black top-1/3 right-10 rounded-lg bg-laravel text-black py-2 px-5 hover:text-laravel hover:bg-black"
         >Add Album</a
     >
+    @endif
+    @endauth
 </footer>
 <x-flashAlert/>
 @livewireScripts

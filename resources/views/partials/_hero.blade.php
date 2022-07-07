@@ -15,16 +15,18 @@ class="relative h-80 bg-laravel flex flex-col justify-center align-center text-c
     </p>
     <div>
         @auth
+        @if($checkadminwriter == true)
         <a
             href="/albums/create"
             class="inline-block border-2 border-black text-black py-2 px-4 rounded-xl uppercase mt-2 hover:text-laravel hover:bg-black"
             >List an album</a
         >
+        @endif
         @else
         <a
             href="/register"
             class="inline-block border-2 border-black text-black py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-            >Sign Up to List an album</a
+            >Sign Up</a
         >
         @endauth
     </div>

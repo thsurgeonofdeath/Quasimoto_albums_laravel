@@ -51,4 +51,9 @@ class User extends Authenticatable
     public function likes(){
         return $this->belongsToMany('App\Models\Album');
     }
+
+    //Role relationship
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
 }

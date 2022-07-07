@@ -21,21 +21,7 @@ use App\Http\Controllers\AlbumController;
 Route::get('/', [AlbumController::class, 'index']);
 //Single Album
 Route::get('/album/{album}', [AlbumController::class, 'show']);
-//Show Create Form
-Route::get('/albums/create', [AlbumController::class, 'create'])
-->middleware('auth');
-//Store Album Data
-Route::post('/albums', [AlbumController::class, 'store'])
-->middleware('auth');
-//Show edit form
-Route::get('/albums/{album}/edit', [AlbumController::class, 'edit'])
-->middleware('auth');
-//Update Album after edit
-Route::put('/albums/{album}', [AlbumController::class, 'update'])
-->middleware('auth');
-//delete listing
-Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])
-->middleware('auth');
+// here again
 
 //Show Register form
 Route::get('/register',[UserController::class, 'create'])->middleware('guest');
@@ -51,9 +37,6 @@ Route::post('/logout',[UserController::class, 'logout'])
 //Log In user
 Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 
-//Manage Albums
-Route::get('/albums/manage',[AlbumController::class, 'manage'])
-->middleware('auth');
 
 //Edit User Informations
 Route::get('/users/edit',[UserController::class,'edit'])
@@ -65,3 +48,24 @@ Route::put('/users/{user}', [UserController::class, 'update'])
 //Favourite albums list
 Route::get('/users/likes',[UserController::class,'likes'])
 ->middleware('auth');
+
+//Roles required to access: Admin or Writer
+Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->group(function(){
+    //Show Create Form
+    Route::get('/albums/create', [AlbumController::class, 'create']);
+    //Store Album Data
+    Route::post('/albums', [AlbumController::class, 'store'])
+    ->middleware('auth');
+    //Show edit form
+    Route::get('/albums/{album}/edit', [AlbumController::class, 'edit'])
+    ->middleware('auth');
+    //Update Album after edit
+    Route::put('/albums/{album}', [AlbumController::class, 'update'])
+    ->middleware('auth');
+    //delete listing
+    Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])
+    ->middleware('auth');
+    //Manage Albums
+    Route::get('/albums/manage',[AlbumController::class, 'manage'])
+    ->middleware('auth');
+});
