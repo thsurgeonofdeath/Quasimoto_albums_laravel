@@ -16,4 +16,16 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 + Admin User Dashboard
 + Guarantee admin to Block/Unblock or Delete User
 + Add User Profile
++ Add a rating system
 + Add (optional) tracklist to albums....
+
+
+--> few screenshots of the web application :
+
+![image](https://user-images.githubusercontent.com/99540220/181979066-ea7021ee-a0d0-45ac-a5a6-9bd5f0d086d3.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/181976720-10029c45-0108-4735-a55d-6cc045154f27.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/181977397-359dd61a-0396-4384-bbdf-7e3164b59fd3.png)
