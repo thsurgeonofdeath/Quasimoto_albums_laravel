@@ -19,7 +19,7 @@
 
             <h3 class="text-2xl mb-2">{{$album->title}}</h3>
             <div class="text-xl font-bold mb-4">{{$album->artist}}</div>
-            <x-tags :tagscsv="$album->tags"/>
+            <x-insidetags :tagscsv="$album->tags"/>
             <div class="text-lg my-4">
                 <i class="fa-solid fa-record-vinyl"></i> Label: {{$album->label}}
             </div>
@@ -29,7 +29,7 @@
                     About the album
                 </h3>
                 <div class="text-lg space-y-6">
-                    <p class="text-justify">
+                    <p class="text-justify px-40 py-10">
                         {{$album->description}}
                     </p>
 
@@ -43,7 +43,7 @@
                     <a
                         href="{{$album->website}}"
                         target="_blank"
-                        class="block bg-black text-laravel py-2 rounded-xl hover:opacity-80"
+                        class=" bg-black text-laravel mt-16 py-2 px-10 rounded-xl hover:opacity-80"
                         ><i class="fa-solid fa-globe"></i> Visit RateYourMusic page</a
                     >
                 </div>
