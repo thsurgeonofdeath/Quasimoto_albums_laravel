@@ -8,6 +8,8 @@
             </h1>
         </header>
 
+
+        @unless($albums->isEmpty())
         <table class="w-full table-auto rounded-sm">
             <thead class="border-gray-300">
                 <tr class="border-gray-300">
@@ -25,9 +27,8 @@
                     </td>
                 </tr>
             </thead>
+        @foreach($albums as $album)
             <tbody>
-                @unless($albums->isEmpty())
-                @foreach($albums as $album)
                 <tr class="border-gray-300">
                     <td class="px-1 py-2 border-t border-b border-gray-300 text-lg">
                         <a href="/album/{{$album->id}}"><img
@@ -59,19 +60,14 @@
                     </td>       
                 </tr>
                 @endforeach
-                @else
-                <tr class="border-gray-300">
-                    <td class="px-4 py-8-border-t border-b border-gray-300 text-lg">
-                        <p class="text-center">No albums to display</p>
-                    </td>
-                </tr>
-                @endunless
-                <script>
-                    function albumDelete() {
-                    return confirm("Are you sure you want to delete this album?");
-                    }
-                </script>
             </tbody>
         </table>
+        @else
+        <div class="flex justify-center">
+            <div class="px-4 py-8 text-lg">
+                <p class="text-center px-5 py-5 italic">No albums to display</p>
+            </div>
+        </div>
+        @endunless
     </x-card>
 </x-layout>

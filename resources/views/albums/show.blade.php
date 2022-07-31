@@ -20,10 +20,7 @@
             <h3 class="text-2xl mb-2">{{$album->title}}</h3>
             <div class="text-xl font-bold mb-4">{{$album->artist}}</div>
             <x-insidetags :tagscsv="$album->tags"/>
-            <div class="text-lg my-4">
-                <i class="fa-solid fa-record-vinyl"></i> Label: {{$album->label}}
-            </div>
-            <div class="border border-gray-200 w-full mb-6"></div>
+            <div class="border border-gray-200 w-full mb-6 mt-5"></div>
             <div>
                 <h3 class="text-3xl font-bold mb-4">
                     About the album

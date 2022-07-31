@@ -59,7 +59,7 @@
                 @enderror
             </div>
 
-            <div class="mb-6">
+            <div class="mb-6 text-center">
                 <button
                     type="submit"
                     class="bg-laravel text-black rounded py-2 px-4 hover:bg-black hover:text-laravel"

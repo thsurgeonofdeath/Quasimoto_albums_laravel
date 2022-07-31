@@ -42,20 +42,20 @@
                       </form>
                     </td>
                 </tr>
-                @endforeach
-                @else
-                <tr class="border-gray-300">
-                    <td class="px-4 py-8-border-t border-b border-gray-300 text-lg">
-                        <p class="text-center">No albums to display</p>
-                    </td>
-                </tr>
-                @endunless
-                <script>
-                    function albumDelete() {
-                    return confirm("Are you sure you want to delete this album?");
-                    }
-                </script>
+             @endforeach
             </tbody>
         </table>
+        @else
+        <div class="flex justify-center">
+            <div class="px-4 py-8 text-lg">
+                <p class="text-center px-5 py-5 italic">No albums to display</p>
+            </div>
+        </div>
+        @endunless
+        <script>
+            function albumDelete() {
+            return confirm("Are you sure you want to delete this album?");
+            }
+        </script>
     </x-card>
 </x-layout>

@@ -2,7 +2,7 @@
     <x-card class="p-10 max-w-lg mx-auto mt-24">
          <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
-                  Edit Gig
+                  Edit Album
             </h2>
                 <p class="mb-4">Edit {{$album->title}}</p>
          </header>
@@ -108,7 +108,7 @@
     
             <div class="mb-6">
                 <label for="logo" class="inline-block text-lg mb-2">
-                    Company Logo
+                     Album Cover
                 </label>
                 <input
                     type="file"
@@ -131,7 +131,7 @@
                     for="description"
                     class="inline-block text-lg mb-2"
                 >
-                    Job Description
+                    Album description
                 </label>
                 <textarea
                     class="border border-gray-200 rounded p-2 w-full"
@@ -144,14 +144,14 @@
                 @enderror
             </div>
     
-            <div class="mb-6">
+            <div class="mb-6 text-center flex justify-around items-center gap-20">
                 <button
                     class="bg-laravel text-black rounded py-2 px-4 hover:bg-black hover:text-laravel"
                 >
                     Save changes
                 </button>
     
-                <a href="/" class="text-black ml-4"> Back </a>
+                <a href="/" class="text-black bg-black text-laravel py-1.5 px-4 rounded hover:bg-laravel hover:text-black"> Back </a>
             </div>
         </form>
     </x-card>
