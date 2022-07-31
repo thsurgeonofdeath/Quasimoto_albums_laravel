@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -27,8 +28,10 @@ class UserController extends Controller
         $user = User::create($formFields);
         $id = $user->id;
         DB::insert('insert into role_user(user_id,role_id) values (?,?)',[$id,3]);
-        auth()->login($user);
 
+        event(new Registered($user));
+
+        auth()->login($user);
         return redirect('/')->with('message','User created and logged in');
 
     }

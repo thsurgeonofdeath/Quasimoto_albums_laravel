@@ -4,6 +4,7 @@ use App\Models\Album;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlbumController;
 
@@ -18,10 +19,10 @@ use App\Http\Controllers\AlbumController;
 |
 */
 //All Albums
-Route::get('/', [AlbumController::class, 'index']);
+Route::get('/', [AlbumController::class, 'index'])->middleware('verified');
 //Single Album
-Route::get('/album/{album}', [AlbumController::class, 'show']);
-// here again
+Route::get('/album/{album}', [AlbumController::class, 'show'])->middleware('verified');
+// here again 
 
 //Show Register form
 Route::get('/register',[UserController::class, 'create'])->middleware('guest');
@@ -40,32 +41,46 @@ Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 
 //Edit User Informations
 Route::get('/users/edit',[UserController::class,'edit'])
-->middleware('auth');
+->middleware('auth','verified');
 //Update User Info
 Route::put('/users/{user}', [UserController::class, 'update'])
 ->middleware('auth');
 
 //Favourite albums list
 Route::get('/users/likes',[UserController::class,'likes'])
-->middleware('auth');
+->middleware('auth','verified');
 
 //Roles required to access: Admin or Writer
 Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->group(function(){
     //Show Create Form
     Route::get('/albums/create', [AlbumController::class, 'create']);
     //Store Album Data
-    Route::post('/albums', [AlbumController::class, 'store'])
-    ->middleware('auth');
+    Route::post('/albums', [AlbumController::class, 'store']);
     //Show edit form
-    Route::get('/albums/{album}/edit', [AlbumController::class, 'edit'])
-    ->middleware('auth');
+    Route::get('/albums/{album}/edit', [AlbumController::class, 'edit']);
     //Update Album after edit
-    Route::put('/albums/{album}', [AlbumController::class, 'update'])
-    ->middleware('auth');
+    Route::put('/albums/{album}', [AlbumController::class, 'update']);
     //delete listing
-    Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])
-    ->middleware('auth');
+    Route::delete('/albums/{album}', [AlbumController::class, 'destroy']);
     //Manage Albums
-    Route::get('/albums/manage',[AlbumController::class, 'manage'])
-    ->middleware('auth');
+    Route::get('/albums/manage',[AlbumController::class, 'manage']);
 });
+
+
+//Email Verification notice :
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+
+//The Email Verification Handler
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+//Resending The Verification Email
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+ 
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
