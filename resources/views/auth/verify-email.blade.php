@@ -21,7 +21,7 @@
                 @csrf
 
                 <div>
-                    <x-button>
+                    <x-button class="bg-laravel text-black hover:bg-black hover:text-laravel">
                         {{ __('Resend Verification Email') }}
                     </x-button>
                 </div>

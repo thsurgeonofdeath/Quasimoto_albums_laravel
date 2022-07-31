@@ -14,6 +14,17 @@
         />
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="//unpkg.com/alpinejs" defer></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            laravel: "#DEDE4C",
+                        },
+                    },
+                },
+            };
+        </script>
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
