@@ -20,6 +20,8 @@
                     extend: {
                         colors: {
                             laravel: "#DEDE4C",
+                            sprite: "#4EBDA8",
+                            ssprite: "#458A7D"
                         },
                     },
                 },
@@ -35,7 +37,14 @@
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 @auth
-                
+                @if($checkadmin == true)
+                <li>
+                    <a href="/users/dashboard" class="hover:text-laravel"
+                        ><i class="fa-solid fa-users"></i>
+                        Manage Users</a
+                    >
+                </li>
+                @endif
                 <li>
                     <a href="/users/edit" class="hover:text-laravel"
                         ><i class="fa-solid fa-user-tie"></i>

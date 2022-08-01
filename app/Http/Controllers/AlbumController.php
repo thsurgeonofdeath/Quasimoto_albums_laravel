@@ -12,18 +12,25 @@ class AlbumController extends Controller
 {
     // show all albums
     public function index(){
-        $check = false;
+        $checkwriter = false;
+        $checkadmin = false;
         if(auth()->user() != null){
-            $check = auth()->user()->roles()->where('name', 'admin')->exists();
-            if($check == false){
-            $check = auth()->user()->roles()->where('name', 'writer')->exists();
+            $checkwriter = auth()->user()->roles()->where('name', 'admin')->exists();
+            if($checkwriter == false){
+            $checkwriter = auth()->user()->roles()->where('name', 'writer')->exists();
             }
             // dd(auth()->user()->roles()->Where('name','writer')->exists());
             // dd($check);
         }
+        if(auth()->user() != null){
+            $checkadmin = auth()->user()->roles()->where('name','admin')->exists();
+        }
+        //dd($checkadmin);
+        $test = true;
         return view('albums.index', [
-            'albums'    => Album::latest()->filter(request(['tag','search','label','date']))->paginate(6),
-            'checkadminwriter'     => $check,
+            'albums'                => Album::latest()->filter(request(['tag','search','label','date']))->paginate(6),
+            'checkadminwriter'      => $checkwriter,
+            'checkadmin'             => $checkadmin,
         ]);
     }
     // show single album

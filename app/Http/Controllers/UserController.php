@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Symfony\Component\Console\Helper\Table;
 
 class UserController extends Controller
 {
@@ -19,7 +20,8 @@ class UserController extends Controller
         $formFields = $request->validate([
             'name'      =>  ['required','min:3'],
             'email'     =>  ['required','email',Rule::unique('users','email')],
-            'password'  =>  'required|confirmed|min:6'
+            'password'  =>  'required|confirmed|min:6',
+            'role'      =>  'user'
         ]);
 
         //Hash password
@@ -27,10 +29,9 @@ class UserController extends Controller
         //Create User and Login
         $user = User::create($formFields);
         $id = $user->id;
+
         DB::insert('insert into role_user(user_id,role_id) values (?,?)',[$id,3]);
-
         event(new Registered($user));
-
         auth()->login($user);
         return redirect('/')->with('message','User created and logged in');
 
@@ -87,8 +88,17 @@ class UserController extends Controller
         return redirect('/')->with('message','Changes Applied Successfully!!!');
     }
 
+    //User likes album relation
     public function likes(){
         $albums = auth()->user()->likes;
         return view('users.likes',['albums' => $albums]);
+    }
+
+    public function dashboard(){
+        $users = DB::table('users')->where('role', 'user')->Orwhere('role', 'writer')->get();
+        //dd($users);
+        return view('users.dashboard',[
+            'users' => $users,
+        ]);
     }
 }

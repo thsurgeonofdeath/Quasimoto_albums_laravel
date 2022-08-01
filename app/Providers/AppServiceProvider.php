@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
         
         view()->composer('*', function ($view) {
-            $check = 1;
+            $check = 1;     
             if(auth()->user() != null){
                     $check = auth()->user()->roles()->where('name', 'admin')->exists();
                 if($check == false){
@@ -36,8 +36,17 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
 
-
             return $view->with('checkadminwriter', $check);
+        });
+
+        view()->composer('*',function($view){
+            $checkadmin = 0;
+            if(auth()->user() != null){
+                $checkadmin = auth()->user()->roles()->where('name','admin')->exists();
+            }
+
+            return $view->with('checkadmin', $checkadmin);
+
         });
        
     }

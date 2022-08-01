@@ -67,6 +67,16 @@ Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->gr
 });
 
 
+//Roles aquired to access: Admin Only!!!
+Route::middleware(['auth','role:admin'])->group(function(){
+    
+    Route::get('users/dashboard',[UserController::class, 'dashboard']);
+});
+
+
+
+
+
 //Email Verification notice :
     Route::get('/email/verify', function () {
         return view('auth.verify-email');
