@@ -9,11 +9,12 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Add album to favourites feature using Livewire
 - User roles: Admin, Writer, User are functional
 - User Email Confirmation Required
+- Admin User Dashboard
 ....
 
 
 ### To Do List : 
-+ Admin User Dashboard
++ Functional Dashboard
 + Guarantee admin to Block/Unblock or Delete User
 + Add User Profile
 + Add a rating system
@@ -29,3 +30,7 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 
 
 ![image](https://user-images.githubusercontent.com/99540220/181977397-359dd61a-0396-4384-bbdf-7e3164b59fd3.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/182188009-c2ef371c-32ac-4016-9d77-1780192087b8.png)
+
