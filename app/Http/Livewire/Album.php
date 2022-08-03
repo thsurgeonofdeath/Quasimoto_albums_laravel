@@ -12,6 +12,7 @@ class Album extends Component
     public function addLike(){
         auth()->user()->likes()->toggle($this->album->id);
     }
+    
     public function render()
     {
         return view('livewire.album');
