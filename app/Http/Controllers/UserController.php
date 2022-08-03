@@ -56,12 +56,18 @@ class UserController extends Controller
             'password'  =>  'required'
         ]);
 
+        //Checking if the user is Blocked
+        $isBlocked = DB::table('users')->where('email', $formFields['email'])->pluck('isBlocked')->first();
+        if($isBlocked){
+            return view('users.blocked');
+        }
+
         //Login the user
         if(auth()->attempt($formFields)){
             $request->session()->regenerate();
-
             return redirect('/')->with('message','Logged in successfully!!');
         }
+
         return back()->withErrors(['email'=>'Invalid credentials'])->onlyInput('email');
 
     }

@@ -1,4 +1,4 @@
-<table class="min-w-full text-center">
+<table class="text-left border-r border-l border-gray-200">
     <thead class="border-b bg-laravel">
       <tr>
         <th scope="col" class="text-sm font-medium text-black px-6 py-4">
@@ -12,6 +12,8 @@
         </th>
         <th scope="col" class="text-sm font-medium text-black px-6 py-4">
           User Actions
+        </th>
+        <th scope="col" class="text-sm font-medium text-black px-6 py-4">
         </th>
         <th scope="col" class="text-sm font-medium text-black px-6 py-4">
         </th>
@@ -34,26 +36,41 @@
             {{$user->email_verified_at}}
             @endif
             </td>
-            <td class="text-red-500 font-light px-6 py-4 hover:bg-red-400 hover:text-white">
-                Block
+            @if(!$user->isBlocked)
+            <td>
+                <button wire:click="blockUser({{ $user->id }})" class="text-red-500 bg-white py-4 w-48 hover:bg-red-400 hover:text-white">
+                  Block
+                </button>
             </td>
+            @else
+            <td>
+              <button wire:click="unblockUser({{ $user->id }})" class="text-white bg-red-700 py-4 w-48 hover:bg-red-900">
+                Unblock
+              </button>
+            </td>
+            @endif
             @if($user->role == 'user')
             <td>
-                <div>
-                    <button wire:click="turnWriter({{ $user->id }})" class="text-white bg-emerald-500 font-light py-4 w-60 hover:bg-emerald-700">
+                    <button wire:click="turnWriter({{ $user->id }})" class="text-white bg-emerald-500 py-4 w-60 hover:bg-emerald-700">
                         Give Writing privileges 
                     </button>
-                </div>
             </td>          
             @else
             <td>
               <div>
-                  <button wire:click="removeWriter({{ $user->id }})" class="text-white bg-yellow-600 font-light  py-4 w-60 hover:bg-cyan-800">
+                  <button wire:click="removeWriter({{ $user->id }})" class="text-white bg-yellow-600  py-4 w-60 hover:bg-yellow-800">
                       Remove Writing previleges
                   </button>
               </div>
-          </td>       
-            @endif   
+            </td>       
+            @endif
+            <td class="content-center ">
+              <button wire:click="deleteUser({{ $user->id }})">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-5" viewBox="0 0 20 20" fill="gray">
+                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            </td>   
         </tr class="bg-white border-b">
         @endforeach                     
     </tbody>

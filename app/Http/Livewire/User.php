@@ -22,6 +22,21 @@ class User extends Component
         return redirect()->to('/users/dashboard');
     }
 
+    public function blockUser($id){
+        DB::table('users')->where('id', $id)->update(['isBlocked' => true]);
+        return redirect()->to('/users/dashboard');
+    }
+
+    public function unblockUser($id){
+        DB::table('users')->where('id', $id)->update(['isBlocked' => false]);
+        return redirect()->to('/users/dashboard');
+    }
+
+    public function deleteUser($id){
+        DB::table('users')->where('id', $id)->delete();
+        return redirect()->to('/users/dashboard');
+    }
+
     public function render()
     {
         $userlist = DB::table('users')->where('role', 'user')->Orwhere('role', 'writer')->get();
