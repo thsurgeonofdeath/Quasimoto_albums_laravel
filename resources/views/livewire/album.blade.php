@@ -19,7 +19,7 @@
             $label = $album->label;
             @endphp
             <div class="flex text-lg mt-4 font-serif">
-                <i class="fa-solid fa-compact-disc"></i>   Label:<a class="hover:text-laravel" href="/?label={{$label}}">{{$label}}</a> 
+                <i class="fa-solid fa-compact-disc"></i>  <a class="hover:text-laravel" href="/?label={{$label}}">  Label: {{$label}}</a> 
             </div>         
         </div>    
     </div>

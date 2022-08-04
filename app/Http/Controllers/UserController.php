@@ -107,4 +107,9 @@ class UserController extends Controller
             'users' => $users,
         ]);
     }
+
+    public function display(){
+        $user = auth()->user();
+        return view('users.display',['user' => $user]);
+    }
 }

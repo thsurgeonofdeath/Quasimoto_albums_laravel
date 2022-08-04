@@ -46,9 +46,9 @@
                 </li>
                 @endif
                 <li>
-                    <a href="/users/edit" class="hover:text-laravel"
+                    <a href="/users/display" class="hover:text-laravel"
                         ><i class="fa-solid fa-user-tie"></i>
-                        Edit Info</a
+                        User Info</a
                     >
                 </li>
                 <li>

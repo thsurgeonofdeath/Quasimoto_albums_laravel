@@ -38,7 +38,9 @@ Route::post('/logout',[UserController::class, 'logout'])
 //Log In user
 Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 
-
+// View Profile Informations
+Route::get('/users/display',[UserController::class,'display'])
+->middleware('auth','verified');
 //Edit User Informations
 Route::get('/users/edit',[UserController::class,'edit'])
 ->middleware('auth','verified');
@@ -78,9 +80,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
 
 //Email Verification notice :
-    Route::get('/email/verify', function () {
-        return view('auth.verify-email');
-    })->middleware('auth')->name('verification.notice');
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
 //The Email Verification Handler
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
