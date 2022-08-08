@@ -11,12 +11,12 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - User Email Confirmation Required
 - Functional Admin User Dashboard
 - Guarantee admin to Block/Unblock or Delete User
+- Add User Profile
 ....
 
 
 ### To Do List : 
-
-+ Add User Profile
++ Style User Profile
 + Add a rating system
 + Add (optional) tracklist to albums....
 
