@@ -29,7 +29,8 @@ class UserController extends Controller
         //Create User and Login
         $user = User::create($formFields);
         $id = $user->id;
-
+        
+        DB::table('users')->where('id', $id)->update(['role' => 'user']);
         DB::insert('insert into role_user(user_id,role_id) values (?,?)',[$id,3]);
         event(new Registered($user));
         auth()->login($user);

@@ -57,7 +57,7 @@ class AlbumController extends Controller
         ]);
 
         if($request->hasFile('logo')){
-            $formFields['logo'] = $request->file('logo')->store('logos','public');
+            $formFields['logo'] = $request->file('logo')->store('covers','public');
         }
 
         $formFields['user_id'] = auth()->id();
@@ -98,7 +98,7 @@ class AlbumController extends Controller
         ]);
 
         if($request->hasFile('logo')){
-            $formFields['logo'] = $request->file('logo')->store('logos','public');
+            $formFields['logo'] = $request->file('logo')->store('covers','public');
         }
 
         $album->update($formFields);
