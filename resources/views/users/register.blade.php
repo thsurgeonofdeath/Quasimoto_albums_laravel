@@ -7,7 +7,7 @@
             {{-- <p class="mb-4">Create an account to add albums</p> --}}
         </header>
 
-        <form action="/users" method="POST">
+        <form action="/users" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">
@@ -36,6 +36,21 @@
                 />
                 @error('email')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="picture" class="inline-block text-lg mb-2">
+                    Profile Picture
+                </label>
+                <input
+                    type="file"
+                    class="border border-gray-200 rounded p-2 w-full"
+                    name="picture"
+                />
+    
+                @error('picture')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
             </div>
 

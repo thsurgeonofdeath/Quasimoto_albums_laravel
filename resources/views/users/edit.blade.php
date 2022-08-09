@@ -7,7 +7,7 @@
             <p>General Kenobi!!</p>
         </header>
 
-        <form action="/users/{{$user->id}}" method="POST">
+        <form action="/users/{{$user->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">
@@ -22,6 +22,24 @@
                 />
                 @error('name')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="picture" class="inline-block text-lg mb-2">
+                     Profile Picture
+                </label>
+                <input
+                    type="file"
+                    class="border border-gray-200 rounded p-2 w-full"
+                    name="picture"
+                />
+                <img
+                class="w-48 mr-6 mb-6"
+                src="{{$user->picture? asset('storage/'.$user->picture) : asset('/images/bouchta.png')}}"
+                alt=""
+                  />
+                @error('picture')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
             </div>
 

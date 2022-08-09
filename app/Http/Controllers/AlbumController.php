@@ -77,10 +77,10 @@ class AlbumController extends Controller
         return view('albums.edit',['album'=>$album]);
     }
 
-    //update listing
+    //update album
     public function update(Request $request, Album $album){
 
-        //Check Authenticated User is Owner
+        //Check Authenticated User is Writer
         $userid = $album->user_id;
         $authid = auth()->id();
         if($userid != $authid){

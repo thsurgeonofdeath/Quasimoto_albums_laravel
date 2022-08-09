@@ -29,14 +29,12 @@
                     <p class="text-justify px-40 py-10">
                         {{$album->description}}
                     </p>
-
                     {{-- <a
                         href="mailto:{{$listing->email}}"
                         class="block bg-laravel text-black mt-6 py-2 rounded-xl hover:opacity-80"
                         ><i class="fa-solid fa-envelope"></i>
                         Contact Employer</a
                     > --}}
-
                     <a
                         href="{{$album->website}}"
                         target="_blank"
@@ -44,6 +42,7 @@
                         ><i class="fa-solid fa-globe"></i> Visit RateYourMusic page</a
                     >
                 </div>
+                
             </div>
         </div>
     </x-card>

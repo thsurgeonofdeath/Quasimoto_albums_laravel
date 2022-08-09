@@ -16,6 +16,7 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 
 
 ### To Do List : 
++ crop pictures before saving it
 + Style User Profile
 + Add a rating system
 + Add (optional) tracklist to albums....
