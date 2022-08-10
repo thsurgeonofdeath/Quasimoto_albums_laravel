@@ -6,6 +6,7 @@ use App\Models\Album;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class AlbumController extends Controller
@@ -28,15 +29,23 @@ class AlbumController extends Controller
         //dd($checkadmin);
         $test = true;
         return view('albums.index', [
-            'albums'                => Album::latest()->filter(request(['tag','search','label','date']))->paginate(6),
+            'albums'                => Album::latest()->filter(request(['tag','search','label','date']))->paginate(10),
             'checkadminwriter'      => $checkwriter,
             'checkadmin'             => $checkadmin,
         ]);
     }
     // show single album
     public function show(Album $album){
+        if($album->tracklist != null){
+            $tracks = explode('%',$album->tracklist);
+        }else{
+            $tracks = ['Tracklist Unavailable'];
+        }
+        
+
         return view('albums.show',[
-            'album' => $album
+            'album' => $album,
+            'tracks' => $tracks
             ]);
     }
     // Show Create Form
@@ -53,7 +62,8 @@ class AlbumController extends Controller
             'website'       =>  'required',
             'tags'          =>  'required',
             'label'         =>  'required',
-            'description'   =>  'required'
+            'description'   =>  'required',
+            'tracklist'     =>  'max:500',
         ]);
 
         if($request->hasFile('logo')){
@@ -71,7 +81,8 @@ class AlbumController extends Controller
         //Check Authenticated User is Owner
         $userid = $album->user_id;
         $authid = auth()->id();
-        if($userid != $authid){
+        $authrole = auth()->user()->role;
+        if($userid != $authid && $authrole != 'admin'){
             return view('error');
         }
         return view('albums.edit',['album'=>$album]);
@@ -83,7 +94,8 @@ class AlbumController extends Controller
         //Check Authenticated User is Writer
         $userid = $album->user_id;
         $authid = auth()->id();
-        if($userid != $authid){
+        $authrole = auth()->user()->role;
+        if($userid != $authid && $authrole != 'admin'){
             abort(403, 'Unauthorized action baby');
         }
 
@@ -94,15 +106,17 @@ class AlbumController extends Controller
             'website'       =>  'required',
             'tags'          =>  'required',
             'label'         =>  'required',
-            'description'   =>  'required'
+            'description'   =>  'required',
+            'tracklist'     =>  'max:500',
         ]);
 
+        $id = $album->id;
         if($request->hasFile('logo')){
             $formFields['logo'] = $request->file('logo')->store('covers','public');
         }
 
         $album->update($formFields);
-        return redirect('/')->with('message','Album updated successfully!');
+        return redirect('/album'.'/'.$id)->with('message','Album updated successfully!');
     }
     //Delete Listing
     public function destroy(Album $album){
@@ -110,8 +124,9 @@ class AlbumController extends Controller
         //Check Authenticated User is Owner
         $userid = $album->user_id;
         $authid = auth()->id();
+        $authrole = auth()->user()->role;
         // dd($userid,$authid);
-        if($userid != $authid){
+        if($userid != $authid && $authrole != 'admin'){
             return view('error');
         }
         $album->delete();
@@ -120,8 +135,18 @@ class AlbumController extends Controller
 
     //Manage albums
     public function manage(){
+
+        $authrole = auth()->user()->role;
+
+        if($authrole == 'admin'){
+            $albums = DB::table('albums')->get();
+        }
+        else{
+            $albums = auth()->user()->albums;
+        }
+
         return view('albums.manage',[
-            'albums' => auth()->user()->albums
+            'albums' => $albums,
         ]);
     }
 }

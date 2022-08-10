@@ -96,8 +96,6 @@ class UserController extends Controller
         //Store new picture
         if($request->hasFile('picture')){
             $image = $request->file('picture');
-            //  $image_resize = Image::make($image);              
-            // $image_resize->fit(350, 350)->encode();
             $formFields['picture'] = $image->store('profiles','public');
         }
         

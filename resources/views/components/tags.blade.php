@@ -2,7 +2,6 @@
 @php
     $tags = explode(',',$tagscsv);
     $counters = 0;
-
 @endphp
 
 <ul class="flex">

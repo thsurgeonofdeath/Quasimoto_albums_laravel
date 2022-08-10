@@ -10,16 +10,16 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - User roles: Admin, Writer, User are functional
 - User Email Confirmation Required
 - Functional Admin User Dashboard
-- Guarantee admin to Block/Unblock or Delete User
-- Add User Profile
+- Guaranteed admin to Block/Unblock or Delete User
+- Added User Profile
+- Added Tracklist
 ....
 
 
 ### To Do List : 
-+ crop pictures before storing it
++ easy access to edit albums for admin/writer
 + Style User Profile
 + Add a rating system
-+ Add (optional) tracklist to albums....
 
 
 --> few screenshots of the web application :
