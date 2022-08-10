@@ -20,7 +20,7 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 + easy access to edit albums for admin/writer
 + Style User Profile
 + Add a rating system
-
++ Add user comments/review
 
 --> few screenshots of the web application :
 
