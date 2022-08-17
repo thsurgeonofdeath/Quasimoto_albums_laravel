@@ -13,11 +13,11 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Guaranteed admin to Block/Unblock or Delete User
 - Added User Profile
 - Added Tracklist
+- easy access to edit albums for admin/writer
 ....
 
 
 ### To Do List : 
-+ easy access to edit albums for admin/writer
 + Style User Profile
 + Add a rating system
 + Add user comments/review
