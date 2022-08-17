@@ -17,4 +17,8 @@ class Album extends Component
     {
         return view('livewire.album');
     }
+
+    public function editAlbum($id){
+        return redirect()->to('albums/'.$id.'/edit');
+    }
 }

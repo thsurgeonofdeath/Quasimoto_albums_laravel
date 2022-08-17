@@ -48,6 +48,11 @@ class AppServiceProvider extends ServiceProvider
             return $view->with('checkadmin', $checkadmin);
 
         });
+
+        view()->composer('*',function($view){
+            $authenticatedUserID = auth()->id();
+            return $view->with('authenticatedUserID', $authenticatedUserID);
+        });
        
     }
 
