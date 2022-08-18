@@ -52,6 +52,10 @@ Route::put('/users/{user}', [UserController::class, 'update'])
 Route::get('/users/likes',[UserController::class,'likes'])
 ->middleware('auth','verified');
 
+//add reviews
+Route::post('/addReview',[AlbumController::class, 'addReview'])
+->middleware('auth');
+
 //Roles required to access: Admin or Writer
 Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->group(function(){
     //Show Create Form

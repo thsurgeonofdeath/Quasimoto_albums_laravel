@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,10 +43,12 @@ class AlbumController extends Controller
             $tracks = ['Tracklist Unavailable'];
         }
         
+        $reviews = DB::table('reviews')->where('album_id', $album->id)->get();
 
         return view('albums.show',[
-            'album' => $album,
-            'tracks' => $tracks
+            'album'     => $album,
+            'tracks'    => $tracks,
+            'reviews'   => $reviews
             ]);
     }
     // Show Create Form
@@ -148,5 +151,20 @@ class AlbumController extends Controller
         return view('albums.manage',[
             'albums' => $albums,
         ]);
+    }
+
+    //add reviews
+    public function addReview(Request $request){
+
+        $formFields = $request->validate([
+            'review'        =>  'required',
+            'album_id'      => 'required',
+        ]);
+
+        $formFields['user_id'] = auth()->id();
+
+        Review::create($formFields);
+
+        return redirect()->back();
     }
 }
