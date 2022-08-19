@@ -14,13 +14,15 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Added User Profile
 - Added Tracklist
 - easy access to edit albums for admin/writer
+- Added user comments/review
 ....
 
 
 ### To Do List : 
++ Style comments/reviews
 + Style User Profile
 + Add a rating system
-+ Add user comments/review
+
 
 --> few screenshots of the web application :
 
