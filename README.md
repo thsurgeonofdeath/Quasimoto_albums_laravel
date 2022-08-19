@@ -15,11 +15,12 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Added Tracklist
 - easy access to edit albums for admin/writer
 - Added user comments/review
+- User can Edit / Delete his Review 
+- Guaranteed admin to delete any reviews
 ....
 
 
 ### To Do List : 
-+ Style comments/reviews
 + Style User Profile
 + Add a rating system
 
@@ -33,6 +34,9 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 
 
 ![image](https://user-images.githubusercontent.com/99540220/183946215-5d16ed5b-daf1-4ba0-bae5-7198103c4df7.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/185641890-6c355595-0740-48a3-89fd-60e64cdea5b2.png)
 
 
 ![image](https://user-images.githubusercontent.com/99540220/182626892-77793aee-ed1c-4bfa-8b83-5af2e4df9a05.png)
