@@ -56,6 +56,10 @@ Route::get('/users/likes',[UserController::class,'likes'])
 Route::post('/addReview',[AlbumController::class, 'addReview'])
 ->middleware('auth');
 
+//edit or delete reviews
+Route::put('/editReview/{review}',[AlbumController::class, 'editReview'])
+->middleware('auth');
+
 //Roles required to access: Admin or Writer
 Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->group(function(){
     //Show Create Form
@@ -77,6 +81,8 @@ Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->gr
 Route::middleware(['auth','role:admin'])->group(function(){
     
     Route::get('users/dashboard',[UserController::class, 'dashboard']);
+
+    Route::delete('/deleteReview/{review}',[AlbumController::class, 'deleteReview']);
 });
 
 

@@ -8,18 +8,18 @@
         />
         <div>
             <h3 class="text-2xl">
-                <a href="/album/{{$album->id}}">{{$album->title}}</a>
+                <a href="/album/{{$album->id}}" class="hover:font-bold hover:text-laravel">{{$album->title}}</a>
             </h3>
-            <div class="text-xl font-bold mb-4">{{$album->artist}}</div>
+            <div class="text-xl font-bold mb-4"><a class="hover:text-laravel" href="/?artist={{$album->artist}}">{{$album->artist}}</a></div>
             <x-tags :tagscsv="$album->tags"/>
             <div class="text-lg mt-4 font-serif">
-                <i class="fa-solid fa-calendar-days"></i>   Release date: <a class="hover:text-laravel" href="/?date={{$album->year}}"> {{$album->year}}
+                <i class="fa-solid fa-calendar-days mx-2"></i>Release date: <a class="hover:text-laravel" href="/?date={{$album->year}}"> {{$album->year}}</a>
             </div>
             @php
             $label = $album->label;
             @endphp
             <div class="flex text-lg mt-4 font-serif">
-                <i class="fa-solid fa-compact-disc"></i>  <a class="hover:text-laravel" href="/?label={{$label}}">  Label: {{$label}}</a> 
+                <i class="fa-solid fa-compact-disc mt-1 mx-2"></i>Label:  <a class="hover:text-laravel" href="/?label={{$label}}"> {{$label}}</a> 
             </div>         
         </div>    
     </div>

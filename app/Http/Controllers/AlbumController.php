@@ -30,7 +30,7 @@ class AlbumController extends Controller
         //dd($checkadmin);
         $test = true;
         return view('albums.index', [
-            'albums'                => Album::latest()->filter(request(['tag','search','label','date']))->paginate(10),
+            'albums'                => Album::latest()->filter(request(['tag','search','label','date','artist']))->paginate(10),
             'checkadminwriter'      => $checkwriter,
             'checkadmin'             => $checkadmin,
         ]);
@@ -165,6 +165,29 @@ class AlbumController extends Controller
 
         Review::create($formFields);
 
+        return redirect()->back();
+    }
+
+     //edit or delete reviews
+     public function editReview(Request $request, Review $review){
+
+        $formFields = $request->validate([
+            'review'        =>  'required',
+        ]);
+
+        switch ($request->input('action')) {
+            case 'update':
+                $review->update($formFields);
+                break;
+            case 'delete':
+                $review->delete();
+                break;
+        }
+        return redirect()->back();
+    }
+
+    public function deleteReview(Request $request, Review $review){
+        $review->delete();
         return redirect()->back();
     }
 }

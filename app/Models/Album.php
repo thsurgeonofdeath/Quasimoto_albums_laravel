@@ -24,6 +24,10 @@ class Album extends Model
         if($filters['date']  ?? false){
             $query->where('year','like','%'.request('date').'%');
         }
+        if($filters['artist']  ?? false){
+            $query->where('artist','like','%'.request('artist').'%');
+        }
+        
     }
 
     // User Relationship
