@@ -85,6 +85,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::delete('/deleteReview/{review}',[AlbumController::class, 'deleteReview']);
 });
 
+// ijaboCropTool plug
+Route::post('/crop',[UserController::class, 'crop'])->name('create.crop');
 
 
 

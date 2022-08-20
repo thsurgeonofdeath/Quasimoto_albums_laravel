@@ -40,7 +40,7 @@
             </div>
 
             <div class="mb-6">
-                <label for="picture" class="inline-block text-lg mb-2">
+                <label class="inline-block text-lg mb-2">
                     Profile Picture
                 </label>
                 <input

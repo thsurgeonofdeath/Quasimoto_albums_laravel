@@ -81,7 +81,6 @@ class UserController extends Controller
     //Show edit user info form
     public function edit(){
         $user = auth()->user();
-        // dd($user);
         return view('users.edit',['user' => $user]);
     }
 
@@ -124,4 +123,23 @@ class UserController extends Controller
         $user = auth()->user();
         return view('users.display',['user' => $user]);
     }
+
+    function crop(Request $request){
+
+        $file = $request->file('picture');
+        $new_image_name = 'profiles/'.'UIMG'.date('Ymd').uniqid().'.jpg';
+        $upload = $file->store('profiles','public');
+        if($upload){
+            $currentUser = auth()->user();
+            $currentUserID = $currentUser->id;
+            $currentUserPicture = $currentUser->picture;
+            if($currentUserPicture){
+                unlink('storage/'.$currentUserPicture);
+            }
+            DB::table('users')->where('id', $currentUserID)->update(['picture' => $upload]);
+            return response()->json(['status'=>1, 'msg'=>'Image has been cropped successfully.', 'name'=>$new_image_name]);
+        }else{
+            return response()->json(['status'=>0, 'msg'=>'Something went wrong, try again later']);
+        }
+      }
 }
