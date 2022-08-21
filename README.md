@@ -17,10 +17,12 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Added user comments/review
 - User can Edit / Delete his Review 
 - Guaranteed admin to delete any reviews
+- User can change and crop his profile picture
 ....
 
 
 ### To Do List : 
++ change the way editing user info works
 + Style User Profile
 + Add a rating system
 
