@@ -1,20 +1,7 @@
 <x-layout>
-    {{-- <div class="flex content-center flex-col items-center gap-0">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="100" height="100" viewBox="0 0 10 10" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <img src="{{asset('images/buggysama.png')}}" alt="lol" class="h-56 w-64">
-        </svg>
-        <p>
-            Hello {{$user->name}}, Buggy The Clown Here, this is a temporary profile page, will do more work on it soon
-        </p><br/>
-        <p>
-            Edit you profile <b><a href="/users/edit">here</a></b>
-        </p>
-    </div> --}}
     <div class="container mx-auto my-5 p-5">
         <div class="md:flex no-wrap md:-mx-2 ">
-            <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2">
-                <!-- Profile Card -->
                 <div class="bg-white p-3 border-t-4 border-laravel">
                     <div class="image overflow-hidden">
                         <img class="h-auto w-full mx-auto"
@@ -41,11 +28,8 @@
                     </ul>
                 </div>
             </div>
-            <!-- Right Side -->
             <div class="w-full md:w-9/12 mx-2 h-64">
-                <!-- Profile tab -->
                 <div class="my-4"></div>
-                <!-- Experience and education -->
                 <div class="bg-white p-3 shadow-sm rounded-sm">
 
                     <div class="grid grid-cols-2">
@@ -102,9 +86,7 @@
                             @endunless
                         </div>
                     </div>
-                    <!-- End of Experience and education grid -->
                 </div>
-                <!-- End of profile tab -->
             </div>
         </div>
     </div>
