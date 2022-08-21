@@ -35,7 +35,10 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 ![image](https://user-images.githubusercontent.com/99540220/183946318-f72aab02-c8c5-493a-8a47-4e204e6a5629.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/183946215-5d16ed5b-daf1-4ba0-bae5-7198103c4df7.png)
+![image](https://user-images.githubusercontent.com/99540220/185798675-d66371c9-82e1-4796-8510-69fca66edbf2.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/185797796-3a314a86-1be7-4355-b9b7-b7c53305a1c6.png)
 
 
 ![image](https://user-images.githubusercontent.com/99540220/185641890-6c355595-0740-48a3-89fd-60e64cdea5b2.png)
