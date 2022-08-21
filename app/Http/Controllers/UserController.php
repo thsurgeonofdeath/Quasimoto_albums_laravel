@@ -102,7 +102,7 @@ class UserController extends Controller
         $formFields['password']=bcrypt($formFields['password']);
         
         $user->update($formFields);
-        return redirect('/')->with('message','Changes Applied Successfully!!!');
+        return redirect('/users/display')->with('message','Changes Applied Successfully!!!');
     }
 
     //User likes album relation
@@ -121,7 +121,16 @@ class UserController extends Controller
 
     public function display(){
         $user = auth()->user();
-        return view('users.display',['user' => $user]);
+        $created_at = explode(' ',$user->created_at);
+        $created_at = $created_at[0];
+        $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);;
+        $likedAlbums = $user->likes->reverse()->slice(0,7);
+        return view('users.display',[
+            'user'          => $user,
+            'created_at'    => $created_at,
+            'reviews'       => $reviews,
+            'likedAlbums'   => $likedAlbums,
+        ]);
     }
 
     function crop(Request $request){
