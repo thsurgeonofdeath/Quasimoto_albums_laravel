@@ -2,7 +2,7 @@
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
     <div class="flex">
         <img
-            class="w-48 mr-6 md:block"
+            class="w-48 h-48 mr-6 md:block"
             src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/noalbum.png')}}"
             alt=""
         />

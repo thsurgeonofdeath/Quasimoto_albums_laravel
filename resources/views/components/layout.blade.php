@@ -145,7 +145,7 @@
         $('#_userProfileID').ijaboCropTool({
            preview : '.image-previewer',
            setRatio:1,
-           allowedExtensions: ['jpg', 'jpeg','png'],
+           allowedExtensions: ['jpg', 'jpeg','png','webp'],
            buttonsText:['CROP','QUIT'],
            buttonsColor:['#30bf7d','#ee5155', -15],
            processUrl:'{{ route("create.crop") }}',

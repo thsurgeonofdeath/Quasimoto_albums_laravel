@@ -91,12 +91,6 @@ class UserController extends Controller
             'name'      =>  ['required','min:3'],
             'password'  =>  'required|confirmed|min:6'
         ]);
-
-        //Store new picture
-        if($request->hasFile('picture')){
-            $image = $request->file('picture');
-            $formFields['picture'] = $image->store('profiles','public');
-        }
         
         //Hash password
         $formFields['password']=bcrypt($formFields['password']);
@@ -113,7 +107,6 @@ class UserController extends Controller
 
     public function dashboard(){
         $users = DB::table('users')->where('role', 'user')->Orwhere('role', 'writer')->get();
-        //dd($users);
         return view('users.dashboard',[
             'users' => $users,
         ]);

@@ -159,14 +159,14 @@
                 @enderror
             </div>
     
-            <div class="mb-6 text-center flex justify-around items-center gap-20">
+            <div class="mb-6 text-center flex justify-around items-center">
                 <button
                     class="bg-laravel text-black rounded py-2 px-4 hover:bg-black hover:text-laravel"
                 >
                     Save changes
                 </button>
     
-                <a href="/" class="text-black bg-black text-laravel py-1.5 px-4 rounded hover:bg-laravel hover:text-black"> Back </a>
+                <a href="/" class="text-black bg-black text-laravel py-1.5 px-4 rounded hover:bg-laravel hover:text-black"> Cancel </a>
             </div>
         </form>
     </x-card>

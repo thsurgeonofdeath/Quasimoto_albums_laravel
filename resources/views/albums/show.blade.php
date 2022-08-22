@@ -55,14 +55,22 @@
     <h2 class="font-bold mb-8">USER REVIEWS :</h3>
         @foreach($reviews as $comment)
             @php
-            $ReviewUser =  DB::table('users')->where('id', $comment->user_id)->get();
+            $ReviewUserCollection =  DB::table('users')->where('id', $comment->user_id)->get();
+            $ReviewUser = $ReviewUserCollection[0];
             @endphp
             <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
                 <div class="relative flex gap-4">
-                    <img src="{{$ReviewUser[0]->picture? asset('storage/'.$ReviewUser[0]->picture) : asset('/images/quasimoto.jpg')}}" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+                    @if ($ReviewUser->isBlocked)
+                    <img src="{{asset('/images/blocked.jpg')}}" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
                     <div class="flex flex-col w-full">
                         <div class="flex flex-row justify-between">
-                            <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{{$ReviewUser[0]->name}}</p>
+                            <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">Blocked User</p>
+                    @else
+                    <img src="{{$ReviewUser->picture? asset('storage/'.$ReviewUser->picture) : asset('/images/quasimoto.jpg')}}" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-row justify-between">
+                            <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{{$ReviewUser->name}}</p>
+                    @endif
                             @if($checkadmin == true)
                             <form action="/deleteReview/{{$comment->id}}" method="POST">
                                 @csrf
@@ -76,6 +84,7 @@
                 </div>
                 <p class="-mt-4 text-gray-500">{{$comment->review}}</p>
             </div>
+
         @endforeach
 
     @endif
