@@ -91,6 +91,8 @@ class UserController extends Controller
             'name'      =>  ['required','min:3'],
             'password'  =>  'required|confirmed|min:6'
         ]);
+
+        //picutres are handled by the ijaboCropTool
         
         //Hash password
         $formFields['password']=bcrypt($formFields['password']);
@@ -112,20 +114,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function display(){
-        $user = auth()->user();
-        $created_at = explode(' ',$user->created_at);
-        $created_at = $created_at[0];
-        $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);;
-        $likedAlbums = $user->likes->reverse()->slice(0,7);
-        return view('users.display',[
-            'user'          => $user,
-            'created_at'    => $created_at,
-            'reviews'       => $reviews,
-            'likedAlbums'   => $likedAlbums,
-        ]);
-    }
-
+    //ijaboCropTool function
     function crop(Request $request){
 
         $file = $request->file('picture');
@@ -143,5 +132,19 @@ class UserController extends Controller
         }else{
             return response()->json(['status'=>0, 'msg'=>'Something went wrong, try again later']);
         }
+      }
+
+      //display user profile
+      public function profile(User $user){
+        $created_at = explode(' ',$user->created_at);
+        $created_at = $created_at[0];
+        $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);;
+        $likedAlbums = $user->likes->reverse()->slice(0,7);
+        return view('users.profile',[
+            'user'          => $user,
+            'created_at'    => $created_at,
+            'reviews'       => $reviews,
+            'likedAlbums'   => $likedAlbums,
+        ]);
       }
 }

@@ -38,14 +38,15 @@ Route::post('/logout',[UserController::class, 'logout'])
 //Log In user
 Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 
-// View Profile Informations
-Route::get('/users/display',[UserController::class,'display'])
-->middleware('auth','verified');
 //Edit User Informations
 Route::get('/users/edit',[UserController::class,'edit'])
 ->middleware('auth','verified');
 //Update User Info
 Route::put('/users/{user}', [UserController::class, 'update'])
+->middleware('auth');
+
+//Show user profile
+Route::get('/users/display/{user}', [UserController::class, 'profile'])
 ->middleware('auth');
 
 //Favourite albums list

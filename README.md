@@ -23,6 +23,7 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 
 
 ### To Do List : 
++ Admin needs to approve the albums posted by writers
 + Add a rating system
 + add a chat system?
 + add more informations to user?

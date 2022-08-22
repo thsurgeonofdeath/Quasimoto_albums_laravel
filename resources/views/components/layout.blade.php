@@ -75,7 +75,7 @@
                 </li>
                 @endif
                 <li>
-                    <a href="/users/display" class="hover:text-laravel"
+                    <a href="/users/display/{{auth()->user()->id}}" class="hover:text-laravel"
                         ><i class="fa-solid fa-user-tie"></i>
                         User Info</a
                     >
