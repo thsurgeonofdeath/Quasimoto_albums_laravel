@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Album;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,26 +16,47 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
-        // $user = User::factory()->create([
-        //     'name'  => 'bachtouti',
-        //     'email' => 'bouchta@mail.com'
-        // ]);
 
-        Album::factory(3)->create([
-            'user_id' => 2
+        User::create([
+            'id'                =>  1,
+            'name'              =>  'Quasimoto',
+            'email'             =>  'lordquas@mail.com',
+            'email_verified_at' =>  now(),
+            'password'          => Hash::make('123456'),
+            'role'              => 'admin',
+            'isBlocked'         => 0,
         ]);
 
-        // Listing::create([
-        //     'title' => 'Laravel Senior Developer', 
-        //     'tags' => 'laravel, javascript',
-        //     'company' => 'Acme Corp',
-        //     'location' => 'Boston, MA',
-        //     'email' => 'email1@email.com',
-        //     'website' => 'https://www.acme.com',
-        //     'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam minima et illo reprehenderit quas possimus voluptas repudiandae cum expedita, eveniet aliquid, quam illum quaerat consequatur! Expedita ab consectetur tenetur delensiti?'
-        // ]);
+        DB::table('roles')->insert([
+            'id' => 1,
+            'name' => 'admin'
+        ]);
+        DB::table('roles')->insert([
+            'id' => 2,
+            'name' => 'writer'
+        ]);
+        DB::table('roles')->insert([
+            'id' => 3,
+            'name' => 'user'
+        ]);
+        DB::table('role_user')->insert([
+            'user_id'   =>  1,
+            'role_id'   =>  1
+        ]);
+        DB::table('role_user')->insert([
+            'user_id'   =>  1,
+            'role_id'   =>  2
+        ]);
+        DB::table('role_user')->insert([
+            'user_id'   =>  1,
+            'role_id'   =>  3
+        ]);
 
+        User::factory(8)->create();
+
+        Album::factory(4)->create([
+            'user_id'   =>  1,
+        ]);
         
     }
 }

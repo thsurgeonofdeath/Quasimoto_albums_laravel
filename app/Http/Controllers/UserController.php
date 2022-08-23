@@ -136,6 +136,10 @@ class UserController extends Controller
 
       //display user profile
       public function profile(User $user){
+        if($user->isBlocked){
+            abort(404);
+        }
+
         $created_at = explode(' ',$user->created_at);
         $created_at = $created_at[0];
         $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);;

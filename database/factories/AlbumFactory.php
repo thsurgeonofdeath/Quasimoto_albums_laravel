@@ -14,14 +14,14 @@ class AlbumFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(),
-            'tags' => 'alternative hiphop, jazz rap',
-            'artist' => $this->faker->name(),
-            'label' => $this->faker->name(),
-            'website' => $this->faker->url(),
-            'year' => $this->faker->year(),
-            'description' => $this->faker->paragraph(5),
-
+            'title'             => $this->faker->sentence(),
+            'tags'              => 'west coast hiphop, Chamber pop, Black metal',
+            'artist'            => $this->faker->name(),
+            'label'             => $this->faker->name(),
+            'website'           => $this->faker->url(),
+            'year'              => $this->faker->year(),
+            'description'       => $this->faker->paragraph(6),
+            'tracklist'         => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         ];
     }
 }

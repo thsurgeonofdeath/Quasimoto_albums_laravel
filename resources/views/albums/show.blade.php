@@ -67,7 +67,7 @@
                             <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">Blocked User</p>
                     @else
                     <a href="/users/display/{{$ReviewUser->id}}">
-                    <img src="{{$ReviewUser->picture? asset('storage/'.$ReviewUser->picture) : asset('/images/quasimoto.jpg')}}" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+                    <img src="{{$ReviewUser->picture? asset('storage/'.$ReviewUser->picture) : asset('/images/quasimoto.jpg')}}" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-22" alt="" loading="lazy">
                     </a>
                     <div class="flex flex-col w-full">
                         <div class="flex flex-row justify-between">
@@ -126,7 +126,4 @@
         </form>
         @endif
 </div>
-
-
-
 </x-layout>

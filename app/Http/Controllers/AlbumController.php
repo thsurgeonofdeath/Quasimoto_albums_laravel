@@ -186,7 +186,7 @@ class AlbumController extends Controller
         return redirect()->back();
     }
 
-    public function deleteReview(Request $request, Review $review){
+    public function deleteReview(Review $review){
         $review->delete();
         return redirect()->back();
     }
