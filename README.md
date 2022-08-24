@@ -19,12 +19,13 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Guaranteed admin to delete any reviews
 - cropping pictures using ijaboCropTool plug
 - Created a user profile page
+- Implemented a star rating system
 ....
 
 
 ### To Do List : 
++ Fix ijaboCropTool bug
 + Admin needs to approve the albums posted by writers
-+ Add a rating system
 + add a chat system?
 + add more informations to user?
 
@@ -42,10 +43,10 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 ![image](https://user-images.githubusercontent.com/99540220/186158692-4ae0bf8f-cb0e-4e60-ad3d-c546270508dc.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/185797796-3a314a86-1be7-4355-b9b7-b7c53305a1c6.png)
+![image](https://user-images.githubusercontent.com/99540220/186443214-c38bf2d7-4568-4150-9db5-96f5bdf139b5.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/185641890-6c355595-0740-48a3-89fd-60e64cdea5b2.png)
+![image](https://user-images.githubusercontent.com/99540220/186442148-77383a50-64a0-4e0e-a0db-596b5660e6ab.png)
 
 
 ![image](https://user-images.githubusercontent.com/99540220/182626892-77793aee-ed1c-4bfa-8b83-5af2e4df9a05.png)
