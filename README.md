@@ -24,7 +24,6 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 
 
 ### To Do List : 
-+ Fix ijaboCropTool bug
 + Admin needs to approve the albums posted by writers
 + add a chat system?
 + add more informations to user?
