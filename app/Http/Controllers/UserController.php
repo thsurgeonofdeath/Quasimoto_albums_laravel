@@ -92,13 +92,20 @@ class UserController extends Controller
             'password'  =>  'required|confirmed|min:6'
         ]);
 
+        //handling files
+        if($request->hasFile('picture')){
+            $currentUserPicture = $user->picture;
+            unlink('storage/'.$currentUserPicture);
+            $formFields['picture'] = $request->file('picture')->store('profiles','public');
+        }
+
         //picutres are handled by the ijaboCropTool
         
         //Hash password
         $formFields['password']=bcrypt($formFields['password']);
         
         $user->update($formFields);
-        return redirect('/users/display')->with('message','Changes Applied Successfully!!!');
+        return redirect('/users/display'.'/'.$user->id)->with('message','Changes Applied Successfully!!!');
     }
 
     //User likes album relation

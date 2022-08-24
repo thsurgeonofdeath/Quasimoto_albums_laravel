@@ -41,8 +41,9 @@ Route::post('/users/authenticate',[UserController::class, 'authenticate']);
 //Edit User Informations
 Route::get('/users/edit',[UserController::class,'edit'])
 ->middleware('auth','verified');
+
 //Update User Info
-Route::put('/users/{user}', [UserController::class, 'update'])
+Route::put('/users/{user}/update', [UserController::class, 'update'])
 ->middleware('auth');
 
 //Show user profile

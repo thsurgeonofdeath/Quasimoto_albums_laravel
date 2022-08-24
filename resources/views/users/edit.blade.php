@@ -7,7 +7,7 @@
             <p>General Kenobi!!</p>
         </header>
 
-        <form action="/users/{{$user->id}}" method="POST" enctype="multipart/form-data">
+        <form action="/users/{{$user->id}}/update" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">

@@ -25,9 +25,10 @@ class Album extends Component
     }
 
     public function deleteAlbum($id){
-        DB::table('albums')->where('id', $id)->delete();
         DB::table('reviews')->where('album_id', $id)->delete();
         DB::table('album_user')->where('album_id', $id)->delete();
+        DB::table('albums')->where('id', $id)->delete();
+
         return redirect()->to('/');
     }
 }
