@@ -123,7 +123,6 @@ class AlbumController extends Controller
     }
     //Delete Listing
     public function destroy(Album $album){
-        
         //Check Authenticated User is Owner
         $userid = $album->user_id;
         $authid = auth()->id();
@@ -161,6 +160,7 @@ class AlbumController extends Controller
             'album_id'      => 'required',
         ]);
 
+        $formFields['rating'] = $request->rating;
         $formFields['user_id'] = auth()->id();
 
         Review::create($formFields);
@@ -174,7 +174,8 @@ class AlbumController extends Controller
         $formFields = $request->validate([
             'review'        =>  'required',
         ]);
-
+        
+        $formFields['rating'] = $request->editRating;
         switch ($request->input('action')) {
             case 'update':
                 $review->update($formFields);

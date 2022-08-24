@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="images/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">    
         <link rel="stylesheet" href="{{ asset('ijaboCropTool/ijaboCropTool.min.css') }}">
         <link
             rel="stylesheet"
@@ -140,7 +141,23 @@
     @livewireScripts
     <!-- ijaboCropTool.js plug -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
-    <script src="{{ asset('ijaboCropTool/ijaboCropTool.min.js') }}"></script> 
+    <script src="{{ asset('ijaboCropTool/ijaboCropTool.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script>
+        $(function () {
+            $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+                var rating = data.rating;
+                document.getElementById('rating').value = rating;
+            });
+        });
+        $(function () {
+            $(".EditRateyo").rateYo().on("rateyo.change", function (e, data) {
+                var rating = data.rating;
+                document.getElementById('editRating').value = rating;
+            });
+        });
+    </script>
     <script>
         $('#_userProfileID').ijaboCropTool({
            preview : '.image-previewer',

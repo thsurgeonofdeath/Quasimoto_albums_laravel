@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class Album extends Component
 {
@@ -20,5 +22,12 @@ class Album extends Component
 
     public function editAlbum($id){
         return redirect()->to('albums/'.$id.'/edit');
+    }
+
+    public function deleteAlbum($id){
+        DB::table('albums')->where('id', $id)->delete();
+        DB::table('reviews')->where('album_id', $id)->delete();
+        DB::table('album_user')->where('album_id', $id)->delete();
+        return redirect()->to('/');
     }
 }

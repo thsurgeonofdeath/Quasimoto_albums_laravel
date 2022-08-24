@@ -40,6 +40,11 @@ class Album extends Model
         return $this->belongsToMany('App\Models\User');
     }
 
+    //reviews relationship
+    public function reviews(){
+        return $this->hasMany('App\Models\Review');
+    }
+
     public function isLiked(){
         if(auth()->check()){
             return auth()->user()->likes->contains('id',$this->id);
