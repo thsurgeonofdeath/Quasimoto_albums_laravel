@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use DB;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -157,5 +158,22 @@ class UserController extends Controller
             'reviews'       => $reviews,
             'likedAlbums'   => $likedAlbums,
         ]);
+      }
+
+      //contact admin
+      public function contactAdmin(){
+        return view('users.contact');
+      }
+
+      public function storeMessage(Request $request, User $user){
+
+        $formFields = $request->validate([
+            'message'         =>  'required'
+        ]);
+        $formFields['user_id'] = $user->id;
+        
+        Message::create($formFields);
+
+        return redirect('/')->with('message','Your message was sent successfully!');
       }
 }

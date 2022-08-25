@@ -22,12 +22,13 @@ class="relative h-80 bg-laravel flex flex-col justify-center align-center text-c
             >List an album</a
         >
         @endif
-        @else
+        @if($checkadmin == false)
         <a
-            href="/register"
-            class="inline-block border-2 border-black text-black py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-            >Sign Up</a
+            href="/contact"
+            class="inline-block border-2 border-black text-black py-2 px-4 rounded-xl uppercase mt-2 hover:text-laravel hover:bg-black"
+            >Contact Us</a
         >
+        @endif
         @endauth
     </div>
 </div>

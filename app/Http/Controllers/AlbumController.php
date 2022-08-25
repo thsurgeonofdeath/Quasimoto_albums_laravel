@@ -75,6 +75,11 @@ class AlbumController extends Controller
 
         $formFields['user_id'] = auth()->id();
 
+
+        $exist = DB::table('albums')->where('artist', $formFields['artist'])->where('title', $formFields['title'])->get()->count();
+        if($exist != 0){
+            return redirect('/')->with('message','Album already exists!!!!');
+        }
         Album::create($formFields);
         return redirect('/')->with('message','Album added successfully!');
     }

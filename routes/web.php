@@ -62,6 +62,14 @@ Route::post('/addReview',[AlbumController::class, 'addReview'])
 Route::put('/editReview/{review}',[AlbumController::class, 'editReview'])
 ->middleware('auth');
 
+//contact admin form
+Route::get('/contact',[UserController::class, 'contactAdmin'])
+->middleware('auth');
+
+//send message
+Route::post('/contactmessage/{user}',[UserController::class, 'storeMessage'])
+->middleware('auth');
+
 //Roles required to access: Admin or Writer
 Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->group(function(){
     //Show Create Form
