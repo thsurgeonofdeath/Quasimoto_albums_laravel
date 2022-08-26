@@ -20,18 +20,20 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - cropping pictures using ijaboCropTool plug
 - Created a user profile page
 - Implemented a star rating system
+- Improved admin dashboard
+- Functional Admin Inbox
 ....
 
 
 ### To Do List : 
-+ Improve users dashboard
++ work more on admin dashboard
 + Admin needs to approve the albums posted by writers
-+ add a chat system?
 + add more informations to user?
 
 --> few screenshots of the web application :
 
-![image](https://user-images.githubusercontent.com/99540220/181979066-ea7021ee-a0d0-45ac-a5a6-9bd5f0d086d3.png)
+
+![image](https://user-images.githubusercontent.com/99540220/186942140-8cda8fbb-b824-4613-830b-3e1cf6dca7e0.png)
 
 
 ![image](https://user-images.githubusercontent.com/99540220/183946318-f72aab02-c8c5-493a-8a47-4e204e6a5629.png)
@@ -49,4 +51,9 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 ![image](https://user-images.githubusercontent.com/99540220/186442148-77383a50-64a0-4e0e-a0db-596b5660e6ab.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/182626892-77793aee-ed1c-4bfa-8b83-5af2e4df9a05.png)
+![image](https://user-images.githubusercontent.com/99540220/186938913-357ff037-9e8a-4e02-957e-e458a997456b.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/186941863-f5491ed5-e770-49de-a484-fe342ae2c89c.png)
+
+
