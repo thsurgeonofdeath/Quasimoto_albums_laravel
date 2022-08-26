@@ -1,5 +1,5 @@
 <table class="text-left border-r border-l border-gray-200">
-    <thead class="border-b bg-laravel">
+    <thead class="border-b bg-gradient-to-r from-laravel to-yellow-500">
       <tr>
         <th scope="col" class="text-sm font-medium text-black px-6 py-4">
           Username

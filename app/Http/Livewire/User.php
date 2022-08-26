@@ -34,11 +34,10 @@ class User extends Component
 
     public function deleteUser($id){
         DB::table('reviews')->where('user_id', $id)->delete();
+        DB::table('messages')->where('user_id', $id)->delete();
         DB::table('role_user')->where('user_id', $id)->delete();
         DB::table('album_user')->where('user_id', $id)->delete();
-        DB::table('users')->where('id', $id)->delete();
-
-        
+        DB::table('users')->where('id', $id)->delete();  
         return redirect()->to('/dashboard');
     }
 

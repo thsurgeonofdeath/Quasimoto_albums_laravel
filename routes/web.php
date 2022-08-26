@@ -98,6 +98,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/dashboard',[UserController::class, 'dashboard']);
 
     Route::get('/dahboard/inbox',[MessageController::class, 'inbox']);
+
+    Route::delete('/deleteMessage/{message}',[MessageController::class, 'deleteMessage']);
 });
 
 // ijaboCropTool plug

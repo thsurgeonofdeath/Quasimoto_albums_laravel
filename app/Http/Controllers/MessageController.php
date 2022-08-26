@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class MessageController extends Controller
 {
@@ -19,6 +21,12 @@ class MessageController extends Controller
 
       // Store message in database
       public function storeMessage(Request $request, User $user){
+
+
+        $messageLength = Str::length($request->message);
+        if($messageLength > 150){
+          return back()->with('message','Operation failed, Message Too Long!!!');
+        }
 
         $formFields = $request->validate([
             'message'         =>  'required'
@@ -35,5 +43,10 @@ class MessageController extends Controller
         return view('users.inbox',[
           'messages'  =>  $messages,
         ]);
+      }
+
+      public function deleteMessage(Message $message){
+        $message->delete();
+        return redirect()->back();
       }
 }
