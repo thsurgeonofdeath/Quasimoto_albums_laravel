@@ -69,9 +69,9 @@
                 @auth
                 @if($checkadmin == true)
                 <li>
-                    <a href="/users/dashboard" class="hover:text-laravel"
-                        ><i class="fa-solid fa-users"></i>
-                        Manage Users</a
+                    <a href="/dashboard" class="hover:text-laravel"
+                        ><i class="fa-solid fa-table"></i>
+                        Dashboard</a
                     >
                 </li>
                 @endif
@@ -121,7 +121,7 @@
     <main>
     {{-- VIEW --}}
     {{$slot}}
-    <main>
+    </main>
     <footer
     class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center"
 >
@@ -139,43 +139,9 @@
     </footer>
     <x-flashAlert/>
     @livewireScripts
-    <!-- ijaboCropTool.js plug -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <script src="{{ asset('ijaboCropTool/ijaboCropTool.min.js') }}"></script>
-    <script>
-        $('#_userProfileID').ijaboCropTool({
-           preview : '.image-previewer',
-           setRatio:1,
-           allowedExtensions: ['jpg', 'jpeg','png','webp'],
-           buttonsText:['CROP','QUIT'],
-           buttonsColor:['#30bf7d','#ee5155', -15],
-           processUrl:'{{ route("create.crop") }}',
-           withCSRF:['_token','{{ csrf_token() }}'],
-           onSuccess:function(message, element, status){
-              alert(message);
-              location.reload();
-           },
-           onError:function(message, element, status){
-             alert(message);
-           }
-        });
-    </script>
-    {{-- Rateyo js file --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
-    <script>
-        $(function () {
-            $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
-                var rating = data.rating;
-                document.getElementById('rating').value = rating;
-            });
-        });
-        $(function () {
-            $(".EditRateyo").rateYo().on("rateyo.change", function (e, data) {
-                var rating = data.rating;
-                document.getElementById('editRating').value = rating;
-            });
-        });
-    </script>
 </body>
 </html>

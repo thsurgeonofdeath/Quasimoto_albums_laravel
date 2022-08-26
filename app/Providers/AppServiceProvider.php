@@ -50,8 +50,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('*',function($view){
+            $authenticatedUser = auth()->user();
             $authenticatedUserID = auth()->id();
-            return $view->with('authenticatedUserID', $authenticatedUserID);
+            return $view->with([
+                'authenticatedUserID' => $authenticatedUserID,
+                'authenticatedUser'   => $authenticatedUser
+         ]);
         });
        
     }

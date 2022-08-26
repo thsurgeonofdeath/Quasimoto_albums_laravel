@@ -46,10 +46,8 @@ class UserController extends Controller
     //Logout
     public function logout(Request $request){
         auth()->logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/')->with('message','you have been logged out bitch!');
     }
     //Login with existing user
@@ -115,16 +113,14 @@ class UserController extends Controller
         return view('users.likes',['albums' => $albums]);
     }
 
-    public function dashboard(){
+    public function usersDashboard(){
         $users = DB::table('users')->where('role', 'user')->Orwhere('role', 'writer')->get();
-        return view('users.dashboard',[
+        return view('users.users-dashboard',[
             'users' => $users,
         ]);
     }
-
     //ijaboCropTool function
     function crop(Request $request){
-
         $file = $request->file('picture');
         $new_image_name = 'profiles/'.'UIMG'.date('Ymd').uniqid().'.jpg';
         $upload = $file->store('profiles','public');
@@ -141,13 +137,11 @@ class UserController extends Controller
             return response()->json(['status'=>0, 'msg'=>'Something went wrong, try again later']);
         }
       }
-
       //display user profile
       public function profile(User $user){
         if($user->isBlocked){
             abort(404);
         }
-
         $created_at = explode(' ',$user->created_at);
         $created_at = $created_at[0];
         $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);;
@@ -160,20 +154,13 @@ class UserController extends Controller
         ]);
       }
 
-      //contact admin
-      public function contactAdmin(){
-        return view('users.contact');
-      }
-
-      public function storeMessage(Request $request, User $user){
-
-        $formFields = $request->validate([
-            'message'         =>  'required'
+      //Admin Dashboard
+      public function dashboard(){
+        $users = DB::table('users')->where('role', 'user')->Orwhere('role', 'writer')->get();
+        return view('users.dashboard',[
+          'users' => $users,
         ]);
-        $formFields['user_id'] = $user->id;
-        
-        Message::create($formFields);
-
-        return redirect('/')->with('message','Your message was sent successfully!');
       }
+
+     
 }

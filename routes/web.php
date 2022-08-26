@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReviewController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,19 +58,19 @@ Route::get('/users/likes',[UserController::class,'likes'])
 ->middleware('auth','verified');
 
 //add reviews
-Route::post('/addReview',[AlbumController::class, 'addReview'])
+Route::post('/addReview',[ReviewController::class, 'addReview'])
 ->middleware('auth');
 
 //edit or delete reviews
-Route::put('/editReview/{review}',[AlbumController::class, 'editReview'])
+Route::put('/editReview/{review}',[ReviewController::class, 'editReview'])
 ->middleware('auth');
 
 //contact admin form
-Route::get('/contact',[UserController::class, 'contactAdmin'])
+Route::get('/contact',[MessageController::class, 'contactAdmin'])
 ->middleware('auth');
 
 //send message
-Route::post('/contactmessage/{user}',[UserController::class, 'storeMessage'])
+Route::post('/contactmessage/{user}',[MessageController::class, 'storeMessage'])
 ->middleware('auth');
 
 //Roles required to access: Admin or Writer
@@ -90,9 +93,11 @@ Route::middleware(['auth','role:admin'])->middleware(['auth','role:writer'])->gr
 //Roles aquired to access: Admin Only!!!
 Route::middleware(['auth','role:admin'])->group(function(){
     
-    Route::get('users/dashboard',[UserController::class, 'dashboard']);
+    Route::delete('/deleteReview/{review}',[ReviewController::class, 'deleteReview']);
 
-    Route::delete('/deleteReview/{review}',[AlbumController::class, 'deleteReview']);
+    Route::get('/dashboard',[UserController::class, 'dashboard']);
+
+    Route::get('/dahboard/inbox',[MessageController::class, 'inbox']);
 });
 
 // ijaboCropTool plug
