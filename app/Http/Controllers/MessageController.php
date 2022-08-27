@@ -24,7 +24,7 @@ class MessageController extends Controller
 
 
         $messageLength = Str::length($request->message);
-        if($messageLength > 150){
+        if($messageLength > 250){
           return back()->with('message','Operation failed, Message Too Long!!!');
         }
 
