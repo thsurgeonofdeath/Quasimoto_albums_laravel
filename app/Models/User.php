@@ -43,9 +43,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    //Listing relationship
+    //Writing relationship
     public function albums() {
-        return $this->hasMany(Album::class, 'user_id');
+        return $this->hasMany('App\Models\Album');
     }
 
     //favourite relationship
@@ -67,4 +67,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function messages(){
         return $this->hasMany('App\Models\Message');
     }
+
 }

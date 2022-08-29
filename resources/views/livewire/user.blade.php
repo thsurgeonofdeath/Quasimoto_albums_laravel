@@ -23,7 +23,12 @@
         @foreach ($users as $user)
         <tr class="bg-white border-b">
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              <div class="flex items-center">
+                <div class="mr-2">
+                    <a href="/users/display/{{$user->id}}"><img class="w-8 h-8 rounded-full" src="{{$user->picture? asset('storage/'.$user->picture) : asset('/images/quasimoto.jpg')}}"/></a>
+                </div>
                 <a href="/users/display/{{$user->id}}">{{$user->name}}</a>
+              </div>
             </td>
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {{$user->email}}

@@ -32,7 +32,7 @@ class Album extends Model
 
     // User Relationship
     public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo('App\Models\User');
     }
 
     //favourite relationship

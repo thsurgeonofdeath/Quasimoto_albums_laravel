@@ -100,6 +100,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/dahboard/inbox',[MessageController::class, 'inbox']);
 
     Route::delete('/deleteMessage/{message}',[MessageController::class, 'deleteMessage']);
+
+    Route::get('/dashboard/pending', [AlbumController::class, 'pending']);
+
+    Route::post('/approve/{album}',[AlbumController::class, 'approve']);
 });
 
 // ijaboCropTool plug
@@ -110,6 +114,9 @@ Route::post('/crop',[UserController::class, 'crop'])->name('create.crop');
 
 //Email Verification notice :
 Route::get('/email/verify', function () {
+    if(auth()->user()->created_at != NULL){
+        return redirect('/');
+    }
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 

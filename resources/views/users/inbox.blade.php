@@ -16,7 +16,7 @@
                 <td class="py-3 px-6 text-left">
                     <div class="flex items-center">
                         <div class="mr-2">
-                            <img class="w-6 h-6 rounded-full" src="{{$sender->picture? asset('storage/'.$sender->picture) : asset('/images/quasimo.jpg')}}"/>
+                            <img class="w-6 h-6 rounded-full" src="{{$sender->picture? asset('storage/'.$sender->picture) : asset('/images/quasimoto.jpg')}}"/>
                         </div>
                         <span>{{$sender->name}}</span>
                     </div>

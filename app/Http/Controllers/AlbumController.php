@@ -27,10 +27,9 @@ class AlbumController extends Controller
         if(auth()->user() != null){
             $checkadmin = auth()->user()->roles()->where('name','admin')->exists();
         }
-        //dd($checkadmin);
-        $test = true;
+
         return view('albums.index', [
-            'albums'                => Album::latest()->filter(request(['tag','search','label','date','artist']))->paginate(10),
+            'albums'                => Album::latest()->where('approved', 1)->filter(request(['tag','search','label','date','artist']))->paginate(10),
             'checkadminwriter'      => $checkwriter,
             'checkadmin'             => $checkadmin,
         ]);
@@ -73,6 +72,12 @@ class AlbumController extends Controller
             $formFields['logo'] = $request->file('logo')->store('covers','public');
         }
 
+        $checkadmin = auth()->user()->roles()->where('name','admin')->exists();
+        
+        if($checkadmin){
+            $formFields['approved'] = true;
+        }
+
         $formFields['user_id'] = auth()->id();
 
 
@@ -81,7 +86,13 @@ class AlbumController extends Controller
             return redirect('/')->with('message','Album already exists!!!!');
         }
         Album::create($formFields);
-        return redirect('/')->with('message','Album added successfully!');
+
+        if($checkadmin){
+            return redirect('/')->with('message','Album added successfully!');
+        }
+        else{
+            return redirect('/')->with('message','Album is waiting for the admin to be approved!');
+        }
     }
 
     //Edit album
@@ -155,5 +166,28 @@ class AlbumController extends Controller
         return view('albums.manage',[
             'albums' => $albums,
         ]);
+    }
+
+    public function pending(){
+
+        $albums = DB::table('albums')->where('approved', 0)->get()->reverse();
+        
+        return view('users.pending',[
+            'pendingAlbums'     =>  $albums,
+        ]);
+    }
+
+    public function approve(Request $request){
+
+        $id = $request->albumID;
+        switch ($request->input('action')) {
+            case 'approve':
+                DB::table('albums')->where('id', $id)->update(['approved' => 1]); 
+                break;
+            case 'delete':
+                DB::table('albums')->where('id', $id)->delete();
+                break;
+        }
+        return redirect()->back()->with('message','Album approved!!');
     }
 }
