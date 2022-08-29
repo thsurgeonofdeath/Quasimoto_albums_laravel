@@ -22,12 +22,12 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Implemented a star rating system
 - Improved admin dashboard
 - Functional Admin Inbox
+- Albums submitted by writers need to be approved by the admin
 ....
 
 
 ### To Do List : 
 + work more on admin dashboard
-+ Admin needs to approve the albums posted by writers
 + add more informations to user?
 
 --> few screenshots of the web application :
@@ -57,3 +57,4 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 ![image](https://user-images.githubusercontent.com/99540220/186941863-f5491ed5-e770-49de-a484-fe342ae2c89c.png)
 
 
+![image](https://user-images.githubusercontent.com/99540220/187230472-6d7ee7e3-fbb5-499a-be5a-f148df7e020c.png)
