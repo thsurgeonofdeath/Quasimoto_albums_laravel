@@ -190,4 +190,25 @@ class AlbumController extends Controller
         }
         return redirect()->back()->with('message','Album approved!!');
     }
+
+    public function approveDetails(Request $request, Album $album){
+
+        if($album->approved == 1){
+            return redirect('/');
+        }
+        
+        if($album->tracklist != null){
+            $tracks = explode('%',$album->tracklist);
+        }else{
+            $tracks = ['Tracklist Unavailable'];
+        }
+
+        $writer = DB::table('users')->where('id', $album->user_id)->first();
+
+        return view('users.view_details',[
+            'album'         => $album,
+            'tracks'        => $tracks,    
+            'writer'        => $writer,
+        ]);
+    }
 }

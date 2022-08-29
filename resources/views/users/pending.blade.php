@@ -14,7 +14,7 @@
             <tbody>
                 @foreach($pendingAlbums as $album)
                     @php
-                        $writer = DB::table('users')->where('id', $album->user_id)->first();
+                        $writer = DB::table('users')->where('id', $album->user_id)->first(); 
                     @endphp
                 <tr>
                 <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
@@ -30,12 +30,14 @@
                     </div>
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <button class="bg-zinc-500 hover:bg-laravel hover:text-zinc-500 text-laravel font-bold py-2 px-4 rounded inline-flex items-center" data-modal-toggle="defaultModal">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 mr-1">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                          </svg>                          
-                        <span>Details</span>                        
-                      </button>
+                    <form action="/dashboard/details/{{$album->id}}" method="GET">
+                        <button class="bg-zinc-500 hover:bg-laravel hover:text-zinc-500 text-laravel font-bold py-2 px-4 rounded inline-flex items-center" data-modal-toggle="defaultModal">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 mr-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                            </svg>                          
+                            <span>Details</span>                        
+                        </button>
+                    </form>
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><div class="flex items-center">
                     <form action="/approve/{{$album->id}}" method="POST">

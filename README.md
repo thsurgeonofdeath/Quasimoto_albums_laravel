@@ -19,7 +19,7 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Guaranteed admin to delete any reviews
 - cropping pictures using ijaboCropTool plug
 - Created a user profile page
-- Implemented a star rating system
+- Implemented a star rating system using rateyo library
 - Improved admin dashboard
 - Functional Admin Inbox
 - Albums submitted by writers need to be approved by the admin

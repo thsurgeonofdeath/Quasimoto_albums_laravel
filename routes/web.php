@@ -104,6 +104,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/dashboard/pending', [AlbumController::class, 'pending']);
 
     Route::post('/approve/{album}',[AlbumController::class, 'approve']);
+
+    Route::get('/dashboard/details/{album}', [AlbumController::class, 'approveDetails']);
 });
 
 // ijaboCropTool plug

@@ -34,7 +34,7 @@
                         @endforeach                       
                     </div>
                     <div class="text-lg ml-10 flex-[4_1_0%]">
-                        <div class="text-left py-10">
+                        <div class="text-left mb-10 " style="white-space: pre-line">
                             {{$album->description}}
                         </div>
                     </div>
