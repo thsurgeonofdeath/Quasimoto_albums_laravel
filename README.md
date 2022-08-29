@@ -58,3 +58,6 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 
 
 ![image](https://user-images.githubusercontent.com/99540220/187230472-6d7ee7e3-fbb5-499a-be5a-f148df7e020c.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/187295798-95570b3c-a55e-4ea6-baf1-e1535eb92c7e.png)
