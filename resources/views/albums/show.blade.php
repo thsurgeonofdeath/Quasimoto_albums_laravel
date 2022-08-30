@@ -17,7 +17,7 @@
                         alt=""
                     />
                 </div>
-                <div class="mt-8">
+                <div class="mt-2">
                     <table>
                         <tr class="h-10">
                             <td class="w-24 text-gray-400">
@@ -71,6 +71,13 @@
                                 <div class="flex items-center">
                                     <span><a href="/users/display/{{$writer->id}}">{{$writer->name}}</a></span>
                                 </div>
+                            </td>
+                        </tr>
+                        <tr class="h-10">
+                            <td>                                         
+                                <a href="{!!Share::currentPage('I am sharing from my personal website')->twitter()->getRawlinks();!!}" class="bg-blue-500 hover:bg-laravel hover:text-black text-white text-xs py-1 px-4 rounded-full" target="_blank">
+                                    <i class="fa-brands fa-twitter"></i> Tweet
+                                </a>
                             </td>
                         </tr>
 
