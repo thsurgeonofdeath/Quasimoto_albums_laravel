@@ -49,7 +49,7 @@ class AlbumController extends Controller
         $reviews = DB::table('reviews')->where('album_id', $album->id)->get();
 
         if(!$reviews->isEmpty()){
-            $avgStar = $reviews->avg('rating');
+            $avgStar = round( $reviews->avg('rating'), 2) ;
             $count = $reviews->count();
         }
 
@@ -69,6 +69,7 @@ class AlbumController extends Controller
     public function create(){
         return view('albums.create');
     }
+
     //Store album data from Form
     public function store(Request $request){
 
@@ -82,6 +83,8 @@ class AlbumController extends Controller
             'description'   =>  'required',
             'tracklist'     =>  'max:500',
         ]);
+
+        $formFields['type']     =  $request->type;
 
         if($request->hasFile('logo')){
             $formFields['logo'] = $request->file('logo')->store('covers','public');
@@ -160,11 +163,15 @@ class AlbumController extends Controller
         $userid = $album->user_id;
         $authid = auth()->id();
         $authrole = auth()->user()->role;
-        // dd($userid,$authid);
+        // post owner and admin can delete
         if($userid != $authid && $authrole != 'admin'){
             return view('error');
         }
+
+        DB::table('reviews')->where('album_id', $album->id)->delete();
+        DB::table('album_user')->where('album_id', $album->id)->delete();
         $album->delete();
+
         return back()->with('message','Album was deleted!');
     }
 
@@ -174,10 +181,10 @@ class AlbumController extends Controller
         $authrole = auth()->user()->role;
 
         if($authrole == 'admin'){
-            $albums = DB::table('albums')->get();
+            $albums = DB::table('albums')->where('approved',1)->get()->reverse();
         }
         else{
-            $albums = auth()->user()->albums;
+            $albums = auth()->user()->albums->where('approved',1)->reverse();
         }
 
         return view('albums.manage',[

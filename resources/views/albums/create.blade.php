@@ -40,6 +40,22 @@
         </div>
 
         <div class="mb-6">
+            <label for="type" class="inline-block text-lg mb-2"
+                >Type</label
+            >
+            <select class="border border-gray-200 rounded p-2 w-full" name="type">
+                <option value="EP">EP</option>
+                <option value="Mixtape">Mixtape</option>
+                <option value="Album" selected>Album</option>
+                <option value="Live Album">Live Album</option>
+                <option value="Compilation">Compilation</option>
+            </select>
+            @error('type')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
             <label
                 for="year"
                 class="inline-block text-lg mb-2"

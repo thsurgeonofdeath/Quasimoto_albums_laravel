@@ -21,7 +21,13 @@ class ReviewController extends Controller
             'album_id'      => 'required',
         ]);
 
-        $formFields['rating'] = $request->rating;
+        if($request->rating == 0){
+            $formFields['rating'] = null;
+        }
+        else{
+            $formFields['rating'] = $request->rating;
+        }
+        
         $formFields['user_id'] = auth()->id();
 
         Review::create($formFields);

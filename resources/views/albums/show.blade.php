@@ -12,12 +12,15 @@
             <div class=" p-8 flex gap-10 mb-0">
                 <div>
                     <img
-                        class="w-72 mr-6 mb-6"
+                        class="w-80 mr-6 mb-6"
                         src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/noalbum.png')}}"
                         alt=""
                     />
                 </div>
-                <div class="mt-2">
+                <div>
+                    <div class="text-2xl text-black font-semibold mb-4">
+                        {{$album->title}}
+                    </div>
                     <table>
                         <tr class="h-10">
                             <td class="w-24 text-gray-400">
@@ -37,18 +40,18 @@
                         </tr>
                         <tr class="h-10">
                             <td class="text-gray-400">
-                                Title
-                            </td>
-                            <td  class="font-bold mb-4 font-serif">
-                                {{$album->title}}
-                            </td>
-                        </tr>
-                        <tr class="h-10">
-                            <td class="text-gray-400">
                                 Genres
                             </td>
                             <td>
                                 <x-insidetags :tagscsv="$album->tags"/>
+                            </td>
+                        </tr>
+                        <tr class="h-10">
+                            <td class="w-24 text-gray-400">
+                                Label
+                            </td>
+                            <td  class="font-bold mb-4 font-serif">
+                                {{$album->label}}
                             </td>
                         </tr>
                         <tr class="h-10">
@@ -135,20 +138,20 @@
                             <div class="flex gap-4">
                             <a href="/users/display/{{$ReviewUser->id}}"><p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{{$ReviewUser->name}}</p></a>
                                 @if(!is_null($comment->rating))
+                                @php
+                                @endphp
                                 <ul class="flex justify-center mt-2">
                                 
                                 {!! str_repeat('<li>
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="w-4 text-yellow-500 mr-0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                     <path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
-                                  </svg></li>',
-                                $comment->rating) !!}
+                                  </svg></li>', $comment->rating) !!}
                                 {!! str_repeat('
                                 <li>
                                     <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="star" class="w-4 text-yellow-500" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                       <path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
                                     </svg>
-                                  </li>',
-                                5 - $comment->rating) !!}
+                                  </li>', 5 - $comment->rating) !!}
                                 </ul>
                                 @endif
                             </div>
