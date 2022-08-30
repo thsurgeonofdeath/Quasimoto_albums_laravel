@@ -23,6 +23,7 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Improved admin dashboard
 - Functional Admin Inbox
 - Albums submitted by writers need to be approved by the admin
+- User can share albums to Twitter
 ....
 
 
@@ -36,7 +37,7 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 ![image](https://user-images.githubusercontent.com/99540220/186942140-8cda8fbb-b824-4613-830b-3e1cf6dca7e0.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/183946318-f72aab02-c8c5-493a-8a47-4e204e6a5629.png)
+![image](https://user-images.githubusercontent.com/99540220/187471151-2081b115-9553-47e2-84f4-db1ef985fa86.png)
 
 
 ![image](https://user-images.githubusercontent.com/99540220/185798675-d66371c9-82e1-4796-8510-69fca66edbf2.png)
