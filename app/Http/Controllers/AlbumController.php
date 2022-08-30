@@ -36,6 +36,10 @@ class AlbumController extends Controller
     }
     // show single album
     public function show(Album $album){
+
+        $avgStar = null;
+        $count = null;
+
         if($album->tracklist != null){
             $tracks = explode('%',$album->tracklist);
         }else{
@@ -44,10 +48,21 @@ class AlbumController extends Controller
         
         $reviews = DB::table('reviews')->where('album_id', $album->id)->get();
 
+        if(!$reviews->isEmpty()){
+            $avgStar = $reviews->avg('rating');
+            $count = $reviews->count();
+        }
+
+        $writer = DB::table('users')->where('id',$album->user_id)->first();
+        
+
         return view('albums.show',[
-            'album'     => $album,
-            'tracks'    => $tracks,
-            'reviews'   => $reviews
+            'album'         =>  $album,
+            'tracks'        =>  $tracks,
+            'reviews'       =>  $reviews,
+            'rating'        =>  $avgStar,
+            'ratingCount'   =>  $count,
+            'writer'        =>  $writer,
             ]);
     }
     // Show Create Form
@@ -128,6 +143,8 @@ class AlbumController extends Controller
             'description'   =>  'required',
             'tracklist'     =>  'max:500',
         ]);
+
+        $formFields['type'] = $request->type;
 
         $id = $album->id;
         if($request->hasFile('logo')){

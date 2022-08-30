@@ -8,22 +8,74 @@
 </a>
 <div class="mx-4">
     <x-card class="p-10">
-        <div
-            class="flex flex-col items-center justify-center text-center"
-        >
-            <img
-                class="w-72 mr-6 mb-6"
-                src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/noalbum.png')}}"
-                alt=""
-            />
+        <div class="flex flex-col">
+            <div class=" p-8 flex gap-10 mb-0">
+                <div>
+                    <img
+                        class="w-72 mr-6 mb-6"
+                        src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/noalbum.png')}}"
+                        alt=""
+                    />
+                </div>
+                <div class="mt-8">
+                    <table>
+                        <tr class="h-10">
+                            <td class="w-24 text-gray-400">
+                                Artist
+                            </td>
+                            <td  class="font-bold mb-4 font-serif">
+                                <a href="/?artist={{$album->artist}}">{{$album->artist}}</a>
+                            </td>
+                        </tr>
+                        <tr class="h-10">
+                            <td class="w-24 text-gray-400">
+                                Type
+                            </td>
+                            <td  class="font-bold mb-4 font-serif">
+                                {{$album->type}}
+                            </td>
+                        </tr>
+                        <tr class="h-10">
+                            <td class="text-gray-400">
+                                Title
+                            </td>
+                            <td  class="font-bold mb-4 font-serif">
+                                {{$album->title}}
+                            </td>
+                        </tr>
+                        <tr class="h-10">
+                            <td class="text-gray-400">
+                                Genres
+                            </td>
+                            <td>
+                                <x-insidetags :tagscsv="$album->tags"/>
+                            </td>
+                        </tr>
+                        <tr class="h-10">
+                            <td class="text-gray-400">
+                                Rating
+                            </td>
+                            <td  class="font-sans text-gray-600">
+                                @if($rating != null)
+                                <span class="font-bold mb-4 text-black font-mono">{{$rating}}</span>/5 from <span class="font-semibold text-gray-800">{{$ratingCount}}</span> ratings
+                                @else
+                                No ratings yet
+                                @endif
+                            </td>
+                        </tr>
+                        <tr class="h-10">
+                            <td class="text-gray-400">
+                                Article By
+                            </td>
+                            <td>
+                                <div class="flex items-center">
+                                    <span><a href="/users/display/{{$writer->id}}">{{$writer->name}}</a></span>
+                                </div>
+                            </td>
+                        </tr>
 
-            <h3 class="text-2xl mb-2">{{$album->title}}</h3>
-            <div class="text-xl font-bold mb-4">{{$album->artist}}</div>
-            <x-insidetags :tagscsv="$album->tags"/>
-            <div class=" w-full mb-6 mt-5">
-                <h3 class="text-3xl font-bold">
-                    About the album
-                </h3>
+                    </table>
+                </div>
             </div>
             <div> 
                 <div class="flex px-10">
@@ -40,12 +92,14 @@
                     </div>
             </div>
             
+            <div class="text-center justify-center"> 
             <a
             href="{{$album->website}}"
             target="_blank"
             class=" bg-black text-laravel mt-16 py-2 px-10 rounded-xl hover:opacity-80"
             ><i class="fa-solid fa-globe"></i> Visit RateYourMusic page</a
-            >              
+            >   
+            </div>           
             </div>
         </div> 
     </x-card>

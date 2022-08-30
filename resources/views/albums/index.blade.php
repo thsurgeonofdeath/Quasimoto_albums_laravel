@@ -12,7 +12,7 @@
     @endforeach
 
     @else
-    <p>Not Listings availables </p>
+    <p>No Albums availables </p>
     @endunless
 </div>
 
