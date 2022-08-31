@@ -24,11 +24,11 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 - Functional Admin Inbox
 - Albums submitted by writers need to be approved by the admin
 - User can share albums to Twitter
+- Improved Styling massively using Tailwind
 ....
 
 
 ### To Do List : 
-+ work more on admin dashboard
 + add more informations to user?
 
 --> few screenshots of the web application :
@@ -46,19 +46,23 @@ Goal is to create a RateYourMusic clone, slightly less complicated, work still i
 ![image](https://user-images.githubusercontent.com/99540220/186158692-4ae0bf8f-cb0e-4e60-ad3d-c546270508dc.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/186443214-c38bf2d7-4568-4150-9db5-96f5bdf139b5.png)
+![image](https://user-images.githubusercontent.com/99540220/187696819-a6667250-f1a9-4b43-b659-88fe49863ea8.png)
 
 
 ![image](https://user-images.githubusercontent.com/99540220/186442148-77383a50-64a0-4e0e-a0db-596b5660e6ab.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/186938913-357ff037-9e8a-4e02-957e-e458a997456b.png)
+![image](https://user-images.githubusercontent.com/99540220/187696039-a8c0ad82-2b0e-4f41-ae95-0ee72bf90ec1.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/186941863-f5491ed5-e770-49de-a484-fe342ae2c89c.png)
+![image](https://user-images.githubusercontent.com/99540220/187696093-eccc9eda-5f69-42da-ab66-038fda3461ba.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/187230472-6d7ee7e3-fbb5-499a-be5a-f148df7e020c.png)
+![image](https://user-images.githubusercontent.com/99540220/187696171-6e10757f-0990-41c2-94c4-f657d8d9f8a0.png)
 
 
-![image](https://user-images.githubusercontent.com/99540220/187295798-95570b3c-a55e-4ea6-baf1-e1535eb92c7e.png)
+![image](https://user-images.githubusercontent.com/99540220/187696287-74dd69aa-ef67-42d8-845b-4d6c87b27902.png)
+
+
+![image](https://user-images.githubusercontent.com/99540220/187696593-09757373-f256-4e3b-b73b-f1642b693964.png)
+
