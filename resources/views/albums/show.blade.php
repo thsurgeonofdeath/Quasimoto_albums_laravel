@@ -78,7 +78,7 @@
                         </tr>
                         <tr class="h-10">
                             <td>                                         
-                                <a href="{!!Share::currentPage('I am sharing from my personal website')->twitter()->getRawlinks();!!}" class="bg-blue-500 hover:bg-laravel hover:text-black text-white text-xs py-1 px-4 rounded-full" target="_blank">
+                                <a href="{!!Share::currentPage('Checkout this album on my personal website :')->twitter()->getRawlinks();!!}" class="bg-blue-500 hover:bg-laravel hover:text-black text-white text-xs py-1 px-4 rounded-full" target="_blank">
                                     <i class="fa-brands fa-twitter"></i> Tweet
                                 </a>
                             </td>

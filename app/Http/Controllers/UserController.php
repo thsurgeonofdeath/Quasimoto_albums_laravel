@@ -113,12 +113,6 @@ class UserController extends Controller
         return view('users.likes',['albums' => $albums]);
     }
 
-    public function usersDashboard(){
-        $users = DB::table('users')->where('role', 'user')->Orwhere('role', 'writer')->get();
-        return view('users.users-dashboard',[
-            'users' => $users,
-        ]);
-    }
     //ijaboCropTool function
     function crop(Request $request){
         $file = $request->file('picture');
@@ -144,7 +138,7 @@ class UserController extends Controller
         }
         $created_at = explode(' ',$user->created_at);
         $created_at = $created_at[0];
-        $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);;
+        $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);
         $likedAlbums = $user->likes->reverse()->slice(0,7);
         return view('users.profile',[
             'user'          => $user,
@@ -154,11 +148,42 @@ class UserController extends Controller
         ]);
       }
 
-      //Admin Dashboard
-      public function dashboard(){
+      //Admin Users Dashboard
+      public function usersBoard(){
         $users = DB::table('users')->where('role', 'user')->Orwhere('role', 'writer')->get();
-        return view('users.dashboard',[
+        return view('users.usersBoard',[
           'users' => $users,
+        ]);
+      }
+
+      //Admin Users Dashboard
+      public function dashboard(){
+
+        // Query to order writers based on how many articles they wrote
+        $albums = DB::table('albums')
+        ->where('approved', 1)
+        ->select(DB::raw('user_id'), DB::raw('count(*) as count'))
+        ->groupBy('user_id')
+        ->orderBy('count', 'desc')
+        ->get(['user_id'])
+        ->unique()
+        ->slice(0,6);
+
+        $index = 0;
+        foreach($albums as $album){
+            $writers[$index] = DB::table('users')->where('id', $album->user_id)->first();
+            $index++;
+        }
+
+        $albumsCount = DB::table('albums')->get()->count();
+        $reviewsCount = DB::table('reviews')->get()->count();
+        $usersCount = DB::table('users')->get()->count();
+        
+        return view('users.dashboard',[
+            'albumsCount'       =>  $albumsCount,
+            'reviewsCount'      =>  $reviewsCount,
+            'usersCount'        =>  $usersCount,
+            'writers'           =>  $writers,
         ]);
       }
 

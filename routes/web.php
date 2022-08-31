@@ -95,9 +95,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
     
     Route::delete('/deleteReview/{review}',[ReviewController::class, 'deleteReview']);
 
+    Route::get('/dashboard/users',[UserController::class, 'usersBoard']);
+    
     Route::get('/dashboard',[UserController::class, 'dashboard']);
 
-    Route::get('/dahboard/inbox',[MessageController::class, 'inbox']);
+    Route::get('/dashboard/inbox',[MessageController::class, 'inbox']);
 
     Route::delete('/deleteMessage/{message}',[MessageController::class, 'deleteMessage']);
 
