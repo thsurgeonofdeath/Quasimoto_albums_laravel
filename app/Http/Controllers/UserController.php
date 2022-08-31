@@ -140,11 +140,15 @@ class UserController extends Controller
         $created_at = $created_at[0];
         $reviews = DB::table('reviews')->where('user_id', $user->id)->get()->reverse()->slice(0,6);
         $likedAlbums = $user->likes->reverse()->slice(0,7);
+
+        $contributions = DB::table('albums')->where('user_id', $user->id)->where('approved', 1)->get()->reverse();
+
         return view('users.profile',[
-            'user'          => $user,
-            'created_at'    => $created_at,
-            'reviews'       => $reviews,
-            'likedAlbums'   => $likedAlbums,
+            'user'          =>  $user,
+            'created_at'    =>  $created_at,
+            'reviews'       =>  $reviews,
+            'likedAlbums'   =>  $likedAlbums,
+            'contributions' =>  $contributions,
         ]);
       }
 

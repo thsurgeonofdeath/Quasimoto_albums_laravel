@@ -23,7 +23,7 @@
                 <tr>
                 <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left flex items-center">
                     <img src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/noalbum.png')}}" class="h-16 w-16" alt="...">
-                    <span class="ml-3 font-semibold font-mono text-black"> {{$album->title}} </span></th>
+                    <span class="ml-3 font-semibold font-mono text-black"> <a href="/album/{{$album->id}}">{{$album->title}} </a></span></th>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 font-mono whitespace-nowrap p-4">{{$album->artist}}</td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
                     <div class="flex items-center gap-8">

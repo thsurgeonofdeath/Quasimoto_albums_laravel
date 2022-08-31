@@ -89,6 +89,26 @@
                         </div>
                     </div>
                 </div>
+                @unless($contributions->isEmpty())
+                <div class="mt-4">
+                    <div class="font-semibold mb-4">
+                        Contributions as a writer
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        @foreach($contributions as $album)
+                        <div>
+                            <div class="mr-4 flex gap-4 items-center">
+                                <img src="{{$album->logo? asset('storage/'.$album->logo) : asset('/images/noalbum.png')}}" class="h-14 w-14" alt="...">
+                                <p class="inline"> <a href="/album/{{$album->id}}">{{$album->title}}</a></p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="h-40">
+
+                </div>
+                @endunless
             </div>
         </div>
     </div>
