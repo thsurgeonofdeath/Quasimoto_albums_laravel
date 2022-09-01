@@ -48,13 +48,10 @@ To run the project locally, follow the next steps :
 - Albums submitted by writers need to be approved by the admin
 - User can share albums to Twitter
 - Improved Styling massively using Tailwind
-....
 
 
-### To Do List : 
-+ add more informations to user?
 
---> few screenshots of the web application :
+-> few screenshots of the web application :
 
 
 ![image](https://user-images.githubusercontent.com/99540220/186942140-8cda8fbb-b824-4613-830b-3e1cf6dca7e0.png)
