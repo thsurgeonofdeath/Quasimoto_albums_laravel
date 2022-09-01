@@ -1,7 +1,30 @@
 # About Project
-Goal is to create a RateYourMusic clone, slightly less complicated, work still in progress...
+Goal was to create a RateYourMusic clone, slightly less complicated
 
-### Done so far:
+## Run the project locally
+
+To run the project locally, follow the next steps :
+- make sure you have wamp server or XAMPP installed
+- Download composer https://getcomposer.org/download/ 
+- Create a database locally named `quasimoto` utf8_general_ci
+- Pull the project from git provider.
+- Rename `.env.example` file to `.env` inside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run mv .env.example .env )
+- create an account on mailtrap and fill the mailtrap informations on the `.env` file, use this video for help :  https://www.youtube.com/watch?v=yIoKD8HF5rU&t=1s
+- Open the console and cd your project root directory
+- Run `composer install`
+- Run `php artisan key:generate`
+- Run `php artisan migrate` to create the database tables and relationships
+- Run `php artisan db:seed` to run the seeders, this will create the admin acoount and few dummy albums/user that you can delete later
+- the credentials for the admin account : Email : `lordquas@mail.com`    /   Password : `123456`
+- Run `php artisan serve`
+- Open `http://127.0.0.1:8000/` on your browser, you can login as an admin and consult the other generated users and their emails in the dashboard
+- all the generated users have `123456` as their password
+
+**if for some reason the project stops working do these**
+- `composer install`
+- `php artisan migrate`
+
+### Tasks done :
 - Styling views with Tailwind
 - Authentification system
 - CRUD fonctionality for User module
