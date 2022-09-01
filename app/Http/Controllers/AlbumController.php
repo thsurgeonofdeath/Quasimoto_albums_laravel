@@ -37,6 +37,10 @@ class AlbumController extends Controller
     // show single album
     public function show(Album $album){
 
+        if($album->approved == 0){
+            return abort(404);
+        }
+
         $avgStar = null;
         $count = null;
 
@@ -155,6 +159,9 @@ class AlbumController extends Controller
         }
 
         $album->update($formFields);
+        if($album->approved == 0){
+        return redirect('/albums/manage')->with('message','Album updated successfully!');
+        }
         return redirect('/album'.'/'.$id)->with('message','Album updated successfully!');
     }
     //Delete Listing
@@ -184,7 +191,7 @@ class AlbumController extends Controller
             $albums = DB::table('albums')->where('approved',1)->get()->reverse();
         }
         else{
-            $albums = auth()->user()->albums->where('approved',1)->reverse();
+            $albums = auth()->user()->albums->reverse();
         }
 
         return view('albums.manage',[
