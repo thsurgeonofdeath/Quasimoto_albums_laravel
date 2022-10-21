@@ -164,23 +164,27 @@ class AlbumController extends Controller
         }
         return redirect('/album'.'/'.$id)->with('message','Album updated successfully!');
     }
-    //Delete Listing
-    public function destroy(Album $album){
-        //Check Authenticated User is Owner
-        $userid = $album->user_id;
-        $authid = auth()->id();
-        $authrole = auth()->user()->role;
-        // post owner and admin can delete
-        if($userid != $authid && $authrole != 'admin'){
-            return view('error');
-        }
 
+    //Delete Album
+    public function destroy(Album $album){
+       
+        //Check Authenticated User is Owner
+            $userid = $album->user_id;
+            $authid = auth()->id();
+            $authrole = auth()->user()->role;
+
+            // Only post owner and admin can delete
+            if($userid != $authid && $authrole != 'admin'){
+                return view('error');
+            }
+        // Confirm Deleting 
         DB::table('reviews')->where('album_id', $album->id)->delete();
         DB::table('album_user')->where('album_id', $album->id)->delete();
         $album->delete();
 
         return back()->with('message','Album was deleted!');
     }
+
 
     //Manage albums
     public function manage(){

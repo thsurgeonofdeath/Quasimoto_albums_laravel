@@ -36,7 +36,7 @@
                 />
                 <img
                 class="w-48 mr-6 mb-6"
-                src="{{$user->picture? asset('storage/'.$user->picture) : asset('/images/bouchta.png')}}"
+                src="{{$user->picture? asset('storage/'.$user->picture) : asset('/images/quasimoto.jpg')}}"
                 alt=""
                   />
                 @error('picture')
